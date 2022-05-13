@@ -7,8 +7,20 @@ require("dotenv").config();
 
 const app = express();
 
+//import routers
+
+const roomrouter = require("./routes/roomRouter");
+
+
+
+
 app.use(bodyparser.json());
 app.use(cors());
+
+//use routers
+
+app.use(roomrouter);
+
 
 const port = process.env.PORT || 5000;
 const uri = process.env.MONGO_URI;
