@@ -1,11 +1,83 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-export default class CreateStudentGroup extends Component {
+
+export default class CreateRoomDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      roomno: "",
+      floor: "",
+      roomtype: "",
+      rent: "",
+      status: "",
+    }; 
+ 
+  }
+
+  handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    this.setState({
+      ...this.state,
+      [name]: value,
+    });
+  };
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+
+    this.setState({
+      ...this.state,
+      [name]: value,
+    });
+  };
+  
+
+  onSubmit = (e) => {
+    e.preventDefault();
+
+
+    const { roomno, floor, roomtype, rent, status } = this.state;
+
+    const data = {
+      roomno: roomno,
+      floor: floor,
+      roomtype: roomtype,
+      rent: rent,
+      status: status,
+    };
+    
+
+
+    console.log(data);
+
+    axios.post("http://localhost:5000/room/save", data).then((res) => {
+      if (res.data.success) { 
+        alert("Hotel Room Created Successfully");
+
+         this.props.history.push({
+          pathname: "/",
+          state: this.roomno,
+          
+        });
+        
+        
+        this.setState({
+          roomno: "",
+          floor: "",
+          roomtype: "",
+          rent: "",
+          status: "",
+        });
+      }
+    });
+  };
+
   render() {
     return (
       <div>
-        <div className="container border border-primary bg-light mt-5 col-md-6">
+     <div className="container border border-dark  mt-5 col-md-6">
           <div className="form-group row">
             <div className="col-lg-12 margin-tb">
               <div>
@@ -16,8 +88,7 @@ export default class CreateStudentGroup extends Component {
             </div>
           </div>
 
-          <form>
-
+          <form onSubmit={this.onSubmit}>
             <div className="row ">
               <div className="col-md-12">
                 <div className="form-group">
@@ -26,77 +97,81 @@ export default class CreateStudentGroup extends Component {
                     type="text"
                     className="form-control"
                     placeholder="Enter Room No -Rxx"
-                    name=""
-                    pattern="R[0-9]{3}"
+                    name="roomno"
+                    pattern="R[0-9]{2}"
                     title="Room No is Invalid"
+                    value={this.state.roomno}
+                    onChange={this.handleInputChange}
                     required
                   />
                 </div>
               </div>
-            </div> 
+            </div>
             &nbsp;
-
             <div className="row ">
-            <div className="col-md-12">
+              <div className="col-md-12">
                 <div className="form-group">
                   <strong>Floor :</strong>
                   <input
                     type="text"
                     className="form-control"
                     placeholder="Enter Floor"
-                    name=""
+                    name="floor"
+                    value={this.state.floor}
+                    onChange={this.handleInputChange}
                     required
                   />
                 </div>
               </div>
             </div>
-            &nbsp;
-
+            &nbsp; &nbsp;
             <div className="row ">
-            <div className="col-md-12">
-                    <div class="form-group">
-                    <strong>Room Type :</strong>
-                    <select class="form-control" id="exampleFormControlSelect1" name ="" readonly>
-                      <option value ="">Single Room</option>
-                      <option value ="">Double Room</option>                    
+              <div className="col-md-12">
+                <div className="form-group">
+                  <strong>Room Type:</strong>
+                  <select className="form-control" name ="roomtype" value={this.state.roomtype}  onChange={this.handleChange} >
+                      <option value ="Not">Not Selected</option>
+                      <option value ="Single Room">Single Room </option>
+                      <option value ="Double Room"> Double Room </option>
                     </select>
-                 </div>
                 </div>
+              </div>
             </div>
-            &nbsp;
-
-            <div className="row "> 
-            <div className="col-md-12">
+            &nbsp; &nbsp;
+            <div className="row ">
+              <div className="col-md-12">
                 <div className="form-group">
                   <strong>Rent (per day) :</strong>
                   <input
                     type="text"
                     className="form-control"
                     placeholder="Enter Rent (Rs)"
-                    name=""
+                    name="rent"
+                    value={this.state.rent}
+                    onChange={this.handleInputChange}
                     required
                   />
                 </div>
               </div>
             </div>
-            &nbsp;
-
+            &nbsp; &nbsp;
             <div className="row ">
-            <div className="col-md-12">
-                    <div class="form-group">
-                    <strong>Status :</strong>
-                    <select class="form-control" id="exampleFormControlSelect1" name ="" readonly>
-                      <option value ="">Reserved</option>
-                      <option value ="">Not Reserved</option>                    
+              <div className="col-md-12">
+                <div className="form-group">
+                  <strong>Status :</strong>
+                  <select className="form-control" name ="status" value={this.state.status}  onChange={this.handleChange} >
+                      <option value ="Not">Not Selected</option>
+                      <option value ="Reserved">Reserved </option>
+                      <option value ="Not Reserved"> Not Reserved </option>
                     </select>
-                 </div>
+
                 </div>
+              </div>
             </div>
             &nbsp;
-
             <div className="col-md-12">
               <div className="form-group">
-                <button className="btn btn-primary" type="submit">
+              <button className="btn btn-outline-success" type="submit">
                   <i className="fa fa-save"> Save </i>
                 </button>
               </div>

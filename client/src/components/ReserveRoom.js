@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import logo from '../images/img.jpg';
 
 export default class ViewRoomDetails extends Component {
   constructor(props) {
@@ -40,27 +41,30 @@ export default class ViewRoomDetails extends Component {
       <div className="container">
         <div className="float-left">
           &nbsp;
-          <h2>Hotel Rooms</h2>
+          <h2>Book Your Hotel Room</h2>
           &nbsp;
         </div>
         <table className="table ">
           <thead>
-          <tr className="b ">
+          <tr className = "">
               <th scope="col">No</th>
+              <th scope="col">Photo</th>
               <th scope="col">Room No</th>
               <th scope="col">Floor</th>
               <th scope="col">Room Type</th>
               <th scope="col">Rent (Rs)</th>
               <th scope="col">Status</th>
-              <th scope="col">Action</th>
+              <th scope="col">Action</th>             
+         
             </tr>
           </thead>
 
           <tbody>
             {this.state.roomdetails.map((roomdetails, index) => (
               <tr>
-                <th>{index + 1}</th>
-                <td>{roomdetails.roomno}</td>
+                <th >{index + 1}</th>
+                <img src={logo} width="250" height="150" />       
+                <td >{roomdetails.roomno}</td>
                 <td>{roomdetails.floor} </td>  
                 <td>{roomdetails.roomtype} </td> 
                 <td>{roomdetails.rent} </td>               
@@ -68,12 +72,9 @@ export default class ViewRoomDetails extends Component {
 
                 <td className="text-center">                 
                   <a className="btn btn-outline-success" href={`/edit/${roomdetails._id}`}>
-                    <i className="fa fa-edit"></i>&nbsp;Edit
+                    <i className="fa fa-bed"></i>&nbsp;Reserve
                   </a>
-                  &nbsp;
-                  <a className="btn btn-outline-danger" href="#" onClick={()=>this.onDelete(roomdetails._id)}>
-                    <i className="fa fa-trash"></i>&nbsp;Delete
-                  </a>
+                  &nbsp;                  
                 </td>
               </tr>
             ))}
