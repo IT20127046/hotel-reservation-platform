@@ -10,6 +10,8 @@ const app = express();
 //import routers
 
 const roomrouter = require("./routes/roomRouter");
+const hotelRouter = require("./routes/hotelRouter");
+const reservedroomRouter = require("./routes/reservedRoomsRouter");
 
 
 
@@ -20,6 +22,8 @@ app.use(cors());
 //use routers
 
 app.use(roomrouter);
+app.use(hotelRouter);
+app.use(reservedroomRouter);
 
 
 const port = process.env.PORT || 5000;
