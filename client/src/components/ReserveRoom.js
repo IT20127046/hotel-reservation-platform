@@ -49,11 +49,11 @@ export default class ViewRoomDetails extends Component {
           <tr className = "">
               <th scope="col">No</th>
               <th scope="col">Photo</th>
+              <th scope="col">Hotel ID</th>
               <th scope="col">Room No</th>
               <th scope="col">Floor</th>
               <th scope="col">Room Type</th>
-              <th scope="col">Rent (Rs)</th>
-              <th scope="col">Status</th>
+              <th scope="col">Rent (Rs)</th>              
               <th scope="col">Action</th>             
          
             </tr>
@@ -63,15 +63,16 @@ export default class ViewRoomDetails extends Component {
             {this.state.roomdetails.map((roomdetails, index) => (
               <tr>
                 <th >{index + 1}</th>
-                <img src={logo} width="250" height="150" />       
+                <img src={logo} width="250" height="150" />  
+                <td>{roomdetails.hotelid} </td>
                 <td >{roomdetails.roomno}</td>
                 <td>{roomdetails.floor} </td>  
                 <td>{roomdetails.roomtype} </td> 
                 <td>{roomdetails.rent} </td>               
-                <td>{roomdetails.status} </td>
+              
 
-                <td className="text-center">                 
-                  <a className="btn btn-outline-success" href={`/edit/${roomdetails._id}`}>
+                <td >                 
+                  <a className="btn btn-outline-success" href="">
                     <i className="fa fa-bed"></i>&nbsp;Reserve
                   </a>
                   &nbsp;                  

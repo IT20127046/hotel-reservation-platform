@@ -12,7 +12,7 @@ export default class App extends Component {
       <BrowserRouter>
           <div>
           
-            <Route path="/" exact component={ViewRoomDetails}></Route>
+            <Route path="/rooms" exact component={ViewRoomDetails}></Route>
             <Route path="/room/add" component={CreateRoomDetails}></Route>
             <Route path="/edit/:id" component={EditRoomDetails}></Route>
             <Route path="/room/reserve" component={ReserveRoom}></Route>

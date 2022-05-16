@@ -1,6 +1,12 @@
 const mongoose = require("mongoose");
 
 const roommodelSchema = new mongoose.Schema({
+
+  hotelid: {
+    type: String,
+    required: true,
+  },
+
   roomno: {
     type: String,
     required: true,
@@ -21,10 +27,7 @@ const roommodelSchema = new mongoose.Schema({
     required: true,
   },
 
-  status: {
-    type: String,
-    required: true,
-  },
+ 
 
 });
 
