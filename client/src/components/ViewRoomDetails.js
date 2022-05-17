@@ -45,28 +45,27 @@ export default class ViewRoomDetails extends Component {
         </div>
         <table className="table ">
           <thead>
-          <tr className="b ">
-              <th scope="col">No</th>
+          <tr >
+              <th scope="col">No</th>             
+              <th scope="col">Hotel ID</th>
               <th scope="col">Room No</th>
               <th scope="col">Floor</th>
               <th scope="col">Room Type</th>
-              <th scope="col">Rent (Rs)</th>
-              <th scope="col">Status</th>
-              <th scope="col">Action</th>
+              <th scope="col">Rent (Rs)</th>              
+              <th scope="col">Action</th> 
             </tr>
           </thead>
 
           <tbody>
             {this.state.roomdetails.map((roomdetails, index) => (
               <tr>
-                <th>{index + 1}</th>
-                <td>{roomdetails.roomno}</td>
+                <th >{index + 1}</th>              
+                <td>{roomdetails.hotelid} </td>
+                <td >{roomdetails.roomno}</td>
                 <td>{roomdetails.floor} </td>  
                 <td>{roomdetails.roomtype} </td> 
-                <td>{roomdetails.rent} </td>               
-                <td>{roomdetails.status} </td>
-
-                <td className="text-center">                 
+                <td>{roomdetails.rent} </td>    
+                <td >                 
                   <a className="btn btn-outline-success" href={`/edit/${roomdetails._id}`}>
                     <i className="fa fa-edit"></i>&nbsp;Edit
                   </a>

@@ -6,11 +6,12 @@ export default class CreateRoomDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      hotelid: "",
       roomno: "",
       floor: "",
       roomtype: "",
       rent: "",
-      status: "",
+     
     }; 
  
   }
@@ -38,14 +39,14 @@ export default class CreateRoomDetails extends Component {
     e.preventDefault();
 
 
-    const { roomno, floor, roomtype, rent, status } = this.state;
+    const {  hotelid, roomno, floor, roomtype, rent } = this.state;
 
     const data = {
+      hotelid: hotelid,
       roomno: roomno,
       floor: floor,
       roomtype: roomtype,
-      rent: rent,
-      status: status,
+      rent: rent,     
     };
     
 
@@ -56,19 +57,17 @@ export default class CreateRoomDetails extends Component {
       if (res.data.success) { 
         alert("Hotel Room Created Successfully");
 
-         this.props.history.push({
-          pathname: "/",
-          state: this.roomno,
-          
-        });
+         window.location ="/rooms"
+       
         
         
         this.setState({
+          hotelid:"",
           roomno: "",
           floor: "",
           roomtype: "",
           rent: "",
-          status: "",
+        
         });
       }
     });
@@ -89,6 +88,25 @@ export default class CreateRoomDetails extends Component {
           </div>
 
           <form onSubmit={this.onSubmit}>
+          <div className="row ">
+              <div className="col-md-12">
+                <div className="form-group">
+                  <strong>Hotel ID :</strong>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Enter Hotel ID -Hxx"
+                    name="hotelid"
+                    pattern="H[0-9]{2}"
+                    title="Hotel ID is Invalid"
+                    value={this.state.hotelid}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            &nbsp;
             <div className="row ">
               <div className="col-md-12">
                 <div className="form-group">
@@ -154,22 +172,8 @@ export default class CreateRoomDetails extends Component {
                 </div>
               </div>
             </div>
-            &nbsp; &nbsp;
-            <div className="row ">
+            &nbsp; &nbsp;          
               <div className="col-md-12">
-                <div className="form-group">
-                  <strong>Status :</strong>
-                  <select className="form-control" name ="status" value={this.state.status}  onChange={this.handleChange} >
-                      <option value ="Not">Not Selected</option>
-                      <option value ="Reserved">Reserved </option>
-                      <option value ="Not Reserved"> Not Reserved </option>
-                    </select>
-
-                </div>
-              </div>
-            </div>
-            &nbsp;
-            <div className="col-md-12">
               <div className="form-group">
               <button className="btn btn-outline-success" type="submit">
                   <i className="fa fa-save"> Save </i>
