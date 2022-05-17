@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-export default class ViewHotelDetails_HAdmin extends Component {
+export default class ViewHotelDetails_Admin extends Component {
   constructor(props) {
     super(props);
 

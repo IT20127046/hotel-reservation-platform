@@ -3,7 +3,7 @@ const res = require("express/lib/response");
 const hotel = require("../models/hotelModel");
 const router = express.Router();
 
-//save Room Details
+//save Hotel Details
 
 router.post("/hotel/add", (req, res) => {
   let newHotel = new hotel(req.body);
@@ -20,7 +20,7 @@ router.post("/hotel/add", (req, res) => {
   });
 });
 
-//get Room Details
+//get Hotel Details
 
 router.get("/hotels", (req, res) => {
   hotel.find().exec((err, hotelDetails) => {
@@ -36,7 +36,7 @@ router.get("/hotels", (req, res) => {
   });
 });
 
-//get specific Room Details
+//get specific Hotel Details
 
 router.get("/hotel/get/:id", (req, res) => {
   let hotelId = req.params.id;
@@ -52,7 +52,7 @@ router.get("/hotel/get/:id", (req, res) => {
   });
 });
 
-//update Room Details
+//update Hotel Details
 
 router.put("/hotel/update/:id", (req, res) => {
   hotel.findByIdAndUpdate(
@@ -71,7 +71,7 @@ router.put("/hotel/update/:id", (req, res) => {
   );
 });
 
-//delete Room Details
+//delete Hotel Details
 
 router.delete("/hotel/delete/:id", (req, res) => {
   hotel
