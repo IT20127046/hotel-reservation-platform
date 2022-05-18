@@ -28,17 +28,17 @@ export default class App extends Component {
             <Route path="/edit/:id" component={EditRoomDetails}></Route>
             <Route path="/room/reserve" component={ReserveRoom}></Route>
 
-<<<<<<< HEAD
+
             <Route path="/addreserved/:id" component={addReservedRoom}></Route>
             <Route path="/viewreservedrooms" component={viewReservedRoom}></Route>
             <Route path="/addreservedtest/:id" component={addReservedRoomTest}></Route>
 
 
             <Route path="/view/hotels" exact component={ViewHotelDetails_HAdmin}></Route>
-=======
+
             <Route path="/view/admin/hotels" exact component={ViewHotelDetails_Admin}></Route>
             <Route path="/view/hadmin/hotels" exact component={ViewHotelDetails_HAdmin}></Route>
->>>>>>> a88966934246b9a3bdfcc81c3f1ebd2117a0ae46
+
             <Route path="/add/hotel" exact component={CreateHotel}></Route>
             <Route path="/hotel/edit/:id" exact component={EditHotelDetails}></Route>
             <Route path="/view/customer/hotels" exact component={ViewHotelDetails_Customer}></Route>
