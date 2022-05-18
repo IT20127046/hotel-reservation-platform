@@ -90,4 +90,58 @@ router.delete("/reservedroom/delete/:id", (req, res) => {
     });
 });
 
+
+
+
+//------------------
+router.post("/reservedrooms/save", (req, res) => {
+  let newRoom = new reservedroom(req.body);
+
+
+  reservedroom.find({roomno:newRoom.roomno},(err, roomdetails) => {
+
+
+    if(err){
+
+      newRoom.save((err) => {
+        if (err) {
+          return res.status(400).json({
+            error: err,
+          });
+        }
+        return res.status(200).json({
+          success: "Room Reserved Succefully",
+        });
+      });
+     
+  
+    }
+    else{
+
+      return res.status(400).json({
+        success: "unsuccefully",
+      });
+      
+  
+    }
+
+
+
+
+
+
+
+
+    
+  });
+
+
+
+  
+});
+
+
+
+
+
 module.exports = router;

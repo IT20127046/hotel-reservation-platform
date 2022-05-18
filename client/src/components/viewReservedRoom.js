@@ -2,27 +2,27 @@ import React, { Component } from "react";
 import axios from "axios";
 import logo from '../images/img.jpg';
 
-export default class ViewRoomDetails extends Component {
+export default class viewReservedRoom extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      roomdetails: [],
+        roomreserveddetails: [],
     };
   }
 
   componentDidMount() {
-    this.retrieveRooms();
+    this.retrieveReservedRooms();
   }
 
-  retrieveRooms() {
-    axios.get("http://localhost:5000/rooms").then((res) => {
+  retrieveReservedRooms() {
+    axios.get("http://localhost:5000/reservedrooms").then((res) => {
       if (res.data.success) {
         this.setState({
-            roomdetails: res.data.existingroomdetails,
+            roomreserveddetails: res.data.existingreservedroomdetails,
         });
 
-        console.log(this.state.roomdetails);
+        console.log(this.state.roomreserveddetails);
       }
     });
   }
@@ -41,7 +41,7 @@ export default class ViewRoomDetails extends Component {
       <div className="container">
         <div className="float-left">
           &nbsp;
-          <h2>Book Your Hotel Room</h2>
+          <h2>Reserved Rooms</h2>
           &nbsp;
         </div>
         <table className="table ">
@@ -53,6 +53,7 @@ export default class ViewRoomDetails extends Component {
               <th scope="col">Floor</th>
               <th scope="col">Room Type</th>
               <th scope="col">Rent (Rs)</th>
+              <th scope="col">Date</th>  
               <th scope="col">Status</th>
               <th scope="col">Action</th>             
          
@@ -60,18 +61,19 @@ export default class ViewRoomDetails extends Component {
           </thead>
 
           <tbody>
-            {this.state.roomdetails.map((roomdetails, index) => (
+            {this.state.roomreserveddetails.map((roomreserveddetails, index) => (
               <tr>
                 <th >{index + 1}</th>
                 <img src={logo} width="250" height="150" />       
-                <td >{roomdetails.roomno}</td>
-                <td>{roomdetails.floor} </td>  
-                <td>{roomdetails.roomtype} </td> 
-                <td>{roomdetails.rent} </td>               
-                <td>{roomdetails.status} </td>
+                <td >{roomreserveddetails.roomno}</td>
+                <td>{roomreserveddetails.floor} </td>  
+                <td>{roomreserveddetails.roomtype} </td> 
+                <td>{roomreserveddetails.rent} </td>               
+                <td>{roomreserveddetails.date} </td>
+                <td>{roomreserveddetails.status} </td>
 
                 <td className="text-center">                 
-                  <a className="btn btn-outline-success" href={`/addreserved/${roomdetails._id}`}>
+                  <a className="btn btn-outline-success" href={`/addreserved/${roomreserveddetails._id}`}>
                     <i className="fa fa-bed"></i>&nbsp;Reserve
                   </a>
                   &nbsp;                  
