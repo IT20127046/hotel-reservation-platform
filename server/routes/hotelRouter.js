@@ -38,10 +38,24 @@ router.get("/hotels", (req, res) => {
 
 //get specific Hotel Details
 
+// router.get("/hotel/get/:id", (req, res) => {
+//   let hotelId = req.params.id;
+
+//   hotel.findById(hotelId, (err, hotelDetails) => {
+//     if (err) {
+//       return res.status(400).json({ success: false, err });
+//     }
+//     return res.status(200).json({
+//       success: true,
+//       hotelDetails,
+//     });
+//   });
+// });
+
 router.get("/hotel/get/:id", (req, res) => {
   let hotelId = req.params.id;
 
-  hotel.findById(hotelId, (err, hotelDetails) => {
+  hotel.findOne({hotelId:hotelId}, (err, hotelDetails) => {
     if (err) {
       return res.status(400).json({ success: false, err });
     }
