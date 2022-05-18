@@ -1,6 +1,13 @@
 const mongoose = require("mongoose");
 
 const reservedroommodelSchema = new mongoose.Schema({
+
+
+  hotelid: {
+    type: String,
+    required: true,
+  },
+
   roomno: {
     type: String,
     required: true,
@@ -29,7 +36,20 @@ const reservedroommodelSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  type: {
+    type: String,
+    required: true,
+  },
+
+
+  roomid: {
+    type: String,
+    required: true,
+  },
+
+
+
 
 });
 
-module.exports = mongoose.model("reservedroomdetails", reservedroommodelSchema);
+module.exports = mongoose.model("reservedroomsdetails", reservedroommodelSchema);

@@ -9,7 +9,10 @@ import EditHotelDetails from './components/EditHotelDetails';
 
 import addReservedRoom from './components/addReservedRoom';
 import viewReservedRoom from './components/viewReservedRoom';
-import addReservedRoomTest from './components/addReservedRoomTest';
+import EditReservedRoomDetails from './components/editReservedRoom';
+import viewBookedDetails from './components/viewBookedDetails';
+import sendmail from './components/sendEmail';
+import viewallBookedDetails from './components/viewAllBookedRoom';
 
 import ViewHotelDetails_Customer from './components/ViewHotelDetails_Customer';
 import ViewHotelDetails_Admin from './components/ViewHotelDetails_Admin';
@@ -30,7 +33,13 @@ export default class App extends Component {
 
             <Route path="/addreserved/:id" component={addReservedRoom}></Route>
             <Route path="/viewreservedrooms" component={viewReservedRoom}></Route>
-            <Route path="/addreservedtest/:id" component={addReservedRoomTest}></Route>
+           
+            <Route path="/editreserved/:id" component={EditReservedRoomDetails}></Route>
+            <Route path="/viewbooked/:id" component={viewBookedDetails}></Route>
+            <Route path="/sendmail" component={sendmail}></Route>
+            <Route path="/viewallbooked" component={viewallBookedDetails}></Route>
+
+
 
 
             <Route path="/view/hotels" exact component={ViewHotelDetails_HAdmin}></Route>

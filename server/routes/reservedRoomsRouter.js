@@ -93,54 +93,28 @@ router.delete("/reservedroom/delete/:id", (req, res) => {
 
 
 
-//------------------
-router.post("/reservedrooms/save", (req, res) => {
-  let newRoom = new reservedroom(req.body);
 
 
-  reservedroom.find({roomno:newRoom.roomno},(err, roomdetails) => {
 
+//get a specipic room no details
+router.get("/reservedroom/roomno/:id",(req,res) =>{
+  let roomno = req.params.id;
 
-    if(err){
-
-      newRoom.save((err) => {
-        if (err) {
-          return res.status(400).json({
-            error: err,
-          });
-        }
-        return res.status(200).json({
-          success: "Room Reserved Succefully",
-        });
+  reservedroom.find({roomno:roomno},(err,room)=>{
+      if(err){
+          return res.status(400).json({success:false, err});
+      }
+      return res.status(200).json({
+          success:true,
+          exsitingRooms:room
       });
-     
-  
-    }
-    else{
-
-      return res.status(400).json({
-        success: "unsuccefully",
-      });
-      
-  
-    }
-
-
-
-
-
-
-
-
-    
   });
-
-
-
-  
 });
 
 
+
+
+//------------------
 
 
 
