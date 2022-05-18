@@ -240,7 +240,7 @@ export default class EditHotelDetails extends Component {
             </div>
             &nbsp;
           </form>
-          <a className="btn btn-outline-danger" href={'/view/hotels'}>
+          <a className="btn btn-outline-danger" href={'/view/admin/hotels'}>
             <i className="fa fa-edit"></i>&nbsp;Back
           </a>
         </div>

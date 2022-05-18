@@ -39,7 +39,7 @@ export default class CreateHotel extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-
+  
     const { hotelID, hotelName, district, city, address, teleNo, description } = this.state;
 
     const data = {
@@ -94,7 +94,7 @@ export default class CreateHotel extends Component {
             </div>
           </div>
 
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={this.onSubmit} encType="multipart/form-data">
             <div className="row ">
               <div className="col-md-12">
                 <div className="form-group">
@@ -225,7 +225,7 @@ export default class CreateHotel extends Component {
             </div>
             &nbsp;
           </form>
-          <a className="btn btn-outline-danger" href={'/view/hotels'}>
+          <a className="btn btn-outline-danger" href={'/view/admin/hotels'}>
             <i className="fa fa-edit"></i>&nbsp;Back
           </a>
         </div>

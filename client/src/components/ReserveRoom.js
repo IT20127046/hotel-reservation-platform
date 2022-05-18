@@ -69,8 +69,11 @@ export default class ViewRoomDetails extends Component {
                 <td>{roomdetails.rent} </td>               
               
 
+
+
                 <td >                 
-                  <a className="btn btn-outline-success" href="">
+                
+                  <a className="btn btn-outline-success" href={`/addreserved/${roomdetails._id}`}>
                     <i className="fa fa-bed"></i>&nbsp;Reserve
                   </a>
                   &nbsp;                  
