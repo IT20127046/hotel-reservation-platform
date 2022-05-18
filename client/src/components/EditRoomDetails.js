@@ -57,6 +57,7 @@ export default class EditRoomDetails extends Component {
     axios.put(`http://localhost:5000/room/update/${id}`, data).then((res) => {
       if (res.data.success) { 
         alert("Hotel Room Updated Successfully");
+        window.location ="/rooms"
                    
         this.setState({
           hotelid:"",

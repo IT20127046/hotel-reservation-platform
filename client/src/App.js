@@ -9,13 +9,13 @@ import ViewHotelDetails_HAdmin from './components/ViewHotelDetails_HAdmin';
 import EditHotelDetails from './components/EditHotelDetails';
 
 
+
 export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
-          <div>
-          
-            <Route path="/rooms" exact component={ViewRoomDetails}></Route>
+          <div>          
+            <Route path="/rooms" component={ViewRoomDetails}></Route>
             <Route path="/room/add" component={CreateRoomDetails}></Route>
             <Route path="/edit/:id" component={EditRoomDetails}></Route>
             <Route path="/room/reserve" component={ReserveRoom}></Route>
