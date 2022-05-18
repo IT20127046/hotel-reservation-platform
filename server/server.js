@@ -12,7 +12,8 @@ const app = express();
 const roomrouter = require("./routes/roomRouter");
 const hotelRouter = require("./routes/hotelRouter");
 const reservedroomRouter = require("./routes/reservedRoomsRouter");
-
+const customerRouter = require("./routes/customerRouter");
+const adminRouter = require("./routes/adminRouter");
 
 
 
@@ -24,7 +25,8 @@ app.use(cors());
 app.use(roomrouter);
 app.use(hotelRouter);
 app.use(reservedroomRouter);
-
+app.use(customerRouter);
+app.use(adminRouter);
 
 const port = process.env.PORT || 5000;
 const uri = process.env.MONGO_URI;
