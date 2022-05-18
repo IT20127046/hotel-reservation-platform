@@ -6,15 +6,14 @@ import EditRoomDetails from './components/EditRoomDetails';
 import ReserveRoom from './components/ReserveRoom';
 import CreateHotel from './components/CreateHotel';
 import EditHotelDetails from './components/EditHotelDetails';
-<<<<<<< HEAD
+
 import addReservedRoom from './components/addReservedRoom';
 import viewReservedRoom from './components/viewReservedRoom';
 import addReservedRoomTest from './components/addReservedRoomTest';
-=======
+
 import ViewHotelDetails_Customer from './components/ViewHotelDetails_Customer';
 import ViewHotelDetails_Admin from './components/ViewHotelDetails_Admin';
 import ViewHotelDetails_HAdmin from './components/ViewHotelDetails_HAdmin';
->>>>>>> a88966934246b9a3bdfcc81c3f1ebd2117a0ae46
 
 
 export default class App extends Component {
