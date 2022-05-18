@@ -47,8 +47,7 @@ export default class ViewRoomDetails extends Component {
         <table className="table ">
           <thead>
           <tr className = "">
-              <th scope="col">No</th>
-              <th scope="col">Photo</th>
+              <th scope="col">No</th>             
               <th scope="col">Hotel ID</th>
               <th scope="col">Room No</th>
               <th scope="col">Floor</th>
@@ -62,8 +61,7 @@ export default class ViewRoomDetails extends Component {
           <tbody>
             {this.state.roomdetails.map((roomdetails, index) => (
               <tr>
-                <th >{index + 1}</th>
-                <img src={logo} width="250" height="150" />  
+                <th >{index + 1}</th>              
                 <td>{roomdetails.hotelid} </td>
                 <td >{roomdetails.roomno}</td>
                 <td>{roomdetails.floor} </td>  

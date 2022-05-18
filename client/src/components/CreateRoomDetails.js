@@ -56,11 +56,8 @@ export default class CreateRoomDetails extends Component {
     axios.post("http://localhost:5000/room/save", data).then((res) => {
       if (res.data.success) { 
         alert("Hotel Room Created Successfully");
-
-         window.location ="/rooms"
-       
-        
-        
+        window.location ="/rooms"      
+                      
         this.setState({
           hotelid:"",
           roomno: "",
