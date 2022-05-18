@@ -9,6 +9,8 @@ import EditHotelDetails from './components/EditHotelDetails';
 import ViewHotelDetails_Customer from './components/ViewHotelDetails_Customer';
 import ViewHotelDetails_Admin from './components/ViewHotelDetails_Admin';
 import ViewHotelDetails_HAdmin from './components/ViewHotelDetails_HAdmin';
+import TestSMSService from './components/TestSMSService';
+import TaxiService from './components/TaxiService';
 
 
 export default class App extends Component {
@@ -27,6 +29,8 @@ export default class App extends Component {
             <Route path="/add/hotel" exact component={CreateHotel}></Route>
             <Route path="/hotel/edit/:id" exact component={EditHotelDetails}></Route>
             <Route path="/view/customer/hotels" exact component={ViewHotelDetails_Customer}></Route>
+            <Route path="/msg/send" exact component={TestSMSService}></Route>
+            <Route path="/taxi" exact component={TaxiService}></Route>
           </div>
       </BrowserRouter>
       

@@ -12,6 +12,8 @@ const app = express();
 const roomrouter = require("./routes/roomRouter");
 const hotelRouter = require("./routes/hotelRouter");
 const reservedroomRouter = require("./routes/reservedRoomsRouter");
+const smsService = require("./services/smsService");
+const taxiService = require("./services/taxiService");
 
 
 
@@ -24,6 +26,8 @@ app.use(cors());
 app.use(roomrouter);
 app.use(hotelRouter);
 app.use(reservedroomRouter);
+app.use(smsService);
+app.use(taxiService);
 
 
 const port = process.env.PORT || 5000;

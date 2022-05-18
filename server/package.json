@@ -14,6 +14,7 @@
   "author": "DS_2022S1_REG_06",
   "license": "ISC",
   "dependencies": {
+    "@vonage/server-sdk": "^2.10.11",
     "body-parser": "^1.20.0",
     "concurrently": "^7.1.0",
     "cors": "^2.8.5",
