@@ -73,6 +73,10 @@ export default class ViewRoomDetails extends Component {
                   <a className="btn btn-outline-danger" href="#" onClick={()=>this.onDelete(roomdetails._id)}>
                     <i className="fa fa-trash"></i>&nbsp;Delete
                   </a>
+                  &nbsp;
+                  <a className="btn btn-outline-danger" href="emails/view">
+                    <i className="fa fa-credit-card"></i>&nbsp;Payment Confirm
+                  </a>
                 </td>
               </tr>
             ))}
