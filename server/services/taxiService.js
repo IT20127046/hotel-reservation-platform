@@ -1,4 +1,5 @@
 const express = require("express");
+const taxiService = require("../models/taxiService");
 const service = express.Router();
 const taxi = require("../models/taxiService");
 
@@ -29,3 +30,5 @@ service.post("/taxi/get", (req, res) => {
   });  
 
 module.exports = service;
+
+taxiService()
