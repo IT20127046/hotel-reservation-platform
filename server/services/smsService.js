@@ -10,8 +10,7 @@ const vonage = new Vonage({
 
 service.post("/sms/send", (req, res) => {
   let getMsg = req.body.sendmsg;
-
-//  console.log(getMsg);
+  let getTeleNo = req.body.teleNo;
 
 //   const from = "Vonage APIs";
 //   const to = "94710411972";
