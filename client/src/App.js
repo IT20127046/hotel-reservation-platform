@@ -9,7 +9,10 @@ import EditHotelDetails from './components/EditHotelDetails';
 
 import addReservedRoom from './components/addReservedRoom';
 import viewReservedRoom from './components/viewReservedRoom';
-import addReservedRoomTest from './components/addReservedRoomTest';
+import EditReservedRoomDetails from './components/editReservedRoom';
+import viewBookedDetails from './components/viewBookedDetails';
+import sendmail from './components/sendEmail';
+import viewallBookedDetails from './components/viewAllBookedRoom';
 
 import ViewHotelDetails_Customer from './components/ViewHotelDetails_Customer';
 import ViewHotelDetails_Admin from './components/ViewHotelDetails_Admin';
@@ -41,9 +44,15 @@ export default class App extends Component {
             <Route path="/room/reserve" component={ReserveRoom}></Route>
 
 
-            <Route path="/addreserved/:id" component={addReservedRoom}></Route>
-            <Route path="/viewreservedrooms" component={viewReservedRoom}></Route>
-            <Route path="/addreservedtest/:id" component={addReservedRoomTest}></Route>
+            <Route path="/reservedrooms/add/:id" component={addReservedRoom}></Route>
+            <Route path="/reservedrooms/view" component={viewReservedRoom}></Route>
+           
+            <Route path="/reservedrooms/edit/:id" component={EditReservedRoomDetails}></Route>
+            <Route path="/booked/view/:id" component={viewBookedDetails}></Route>
+            <Route path="/mail/send" component={sendmail}></Route>
+            <Route path="/allbooked/view" component={viewallBookedDetails}></Route>
+
+
 
 
             <Route path="/view/hotels" exact component={ViewHotelDetails_HAdmin}></Route>
