@@ -47,9 +47,8 @@ export default class TaxiService extends Component {
                 alert(res.data.success);
                 console.log(res.data.success);
 
-             this.props.history.push({
-              pathname: "/view/customer/hotels"
-            });
+             
+              window.location = "/taxi/alert";
         
             }
         });
