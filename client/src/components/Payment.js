@@ -10,9 +10,11 @@ import {
 
 
 function App() {
-  const [amount, setAmount] = useState();
-
+  const [amount, setAmount] = useState(100);
   const [name, setName] = useState();
+
+
+ 
 
   const handleToken = (token) => {
     fetch("http://localhost:5000/payment/donate", {
@@ -25,6 +27,7 @@ function App() {
       .then((res) => res.json())
       .then((_) => {
         window.alert("Transaction Successful.");
+        window.location="/taxi/book"
       })
       .catch((_) => window.alert("Transaction Failed."));
   };
@@ -40,6 +43,7 @@ function App() {
   };
 
   return (
+    
     <div
       className="App"
       style={{
@@ -52,6 +56,7 @@ function App() {
         gap: 15,
       }}
     >
+    
       <div className="container border border-dark  mt-5 col-md-5">
         <div className="form-group row">
           <div className="col-lg-12 margin-tb">
@@ -89,6 +94,7 @@ function App() {
                 <InputAdornment position="start">$</InputAdornment>
               }
               label="Amount"
+             
             />
           </FormControl>
           &nbsp;
