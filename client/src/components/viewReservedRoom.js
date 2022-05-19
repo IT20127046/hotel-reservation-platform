@@ -25,6 +25,17 @@ export default class viewReservedRoom extends Component {
         console.log(this.state.roomreserveddetails);
       }
     });
+    // const hotelID = this.props.match.params.id;
+
+    // axios.get(`http://localhost:5000/hotel/reservedroom/${hotelID}`).then((res) => {
+    //   if (res.data.success) {
+    //     this.setState({
+    //         roomreserveddetails: res.data.roomdetails,
+    //     });
+
+    //     console.log(this.state.roomreserveddetails);
+    //   }
+    // });
   }
 
   onDelete =(id)=>{

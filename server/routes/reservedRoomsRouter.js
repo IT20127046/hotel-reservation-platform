@@ -52,6 +52,22 @@ router.get("/reservedroom/:id", (req, res) => {
   });
 });
 
+//get specific reservedRoom Details based HotelID
+
+// router.get("/hotel/reservedroom/:id", (req, res) => {
+//   let hotelID = req.params.id;
+
+//   reservedroom.findOne({hotelid:hotelID}, (err, roomdetails) => {
+//     if (err) {
+//       return res.status(400).json({ success: false, err });
+//     }
+//     return res.status(200).json({
+//       success: true,
+//       roomdetails,
+//     });
+//   });
+// });
+
 //update reservedRoom Details
 
 router.put("/reservedroom/update/:id", (req, res) => {
