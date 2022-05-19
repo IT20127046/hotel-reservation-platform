@@ -7,9 +7,14 @@ import {
   OutlinedInput,
 } from "@mui/material";
 
+
+
 function App() {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(100);
   const [name, setName] = useState();
+
+
+ 
 
   const handleToken = (token) => {
     fetch("http://localhost:5000/payment/donate", {
@@ -22,6 +27,7 @@ function App() {
       .then((res) => res.json())
       .then((_) => {
         window.alert("Transaction Successful.");
+        window.location="/taxi/book"
       })
       .catch((_) => window.alert("Transaction Failed."));
   };
@@ -37,6 +43,7 @@ function App() {
   };
 
   return (
+    
     <div
       className="App"
       style={{
@@ -49,19 +56,20 @@ function App() {
         gap: 15,
       }}
     >
+    
       <div className="container border border-dark  mt-5 col-md-5">
         <div className="form-group row">
           <div className="col-lg-12 margin-tb">
             <div>
               &nbsp;
-              <h2 className="text-center">Pay Your Bill</h2>
+              <h2 className="text-center">Credit Card Payment</h2>
               &nbsp;
             </div>
           </div>
         </div>
 
-        <form className="py-3">
-          <FormControl sx={{ m: 1 }} className="col-md-12">
+        <form className="py-3">    
+           <FormControl sx={{ m: 1 }} className="col-md-12">
             <InputLabel htmlFor="outlined-adornment-holdername">
               Card Holder Name
             </InputLabel>
@@ -86,6 +94,7 @@ function App() {
                 <InputAdornment position="start">$</InputAdornment>
               }
               label="Amount"
+             
             />
           </FormControl>
           &nbsp;
