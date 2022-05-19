@@ -37,6 +37,7 @@ export default class CustomerLogin extends Component {
             email: user.email,
             password: user.password
         }).then(res => {
+            alert("Login successful!")
             localStorage.setItem('userToken', res.data)
             this.props.history.push(`/customer/home`)
             window.location.reload();
@@ -95,6 +96,8 @@ export default class CustomerLogin extends Component {
                                 >
                                     Login
                                 </button>
+                                <a href='/customer/register'> Not a registered user</a>
+                                <a style={{textAlign: "right"}} href='/'> Back</a>
                             </div>
                         </form>
                     </div>

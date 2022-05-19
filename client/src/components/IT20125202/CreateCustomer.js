@@ -1,6 +1,6 @@
 //customer registration
 import React, { Component } from 'react';
-import axios from 'axios';
+import { customerRegister } from './UserFunctions';
 
 export default class CreateCustomer extends Component {
 
@@ -44,24 +44,30 @@ export default class CreateCustomer extends Component {
         password: this.state.password
     }
 
-    axios.post('http://localhost:5000/customer/registration', user)
-        .then(res => {
-            if (res.data.success) {
-                window.alert('Registered successfully!');
-                this.props.history.push(`/customer/login`)
-                window.location.reload();
-            }
-        })
-        .catch(err => {
-            return err
-        })
-    // userRegister(user).then(res => {
+    let validated = true;
 
-    //   if (res) {
-    //     this.props.history.push(`/user/login`)
-    //     window.location.reload();
-    //   }
-    // })
+    if(this.state.firstName == "" || this.state.lastName == "" || this.state.NIC == "" || this.state.email == "" || this.state.mobile == "" || this.state.country == "" || this.state.password == ""){
+      validated = false;
+      alert('Please fill all fields');
+    }
+    else if(this.state.mobile.length < 10 ){
+      validated = false;
+      alert('Please enter a valid mobile number')
+    }
+    else if(this.state.password.length < 8){
+        validated = false;
+        alert('There should be at least 8 characters in the password')
+    }
+
+    if(validated){
+      customerRegister(user).then(res => {
+        if (res) {
+          alert('Registered successfully!');
+          this.props.history.push(`/customer/login`)
+          window.location.reload();
+        }
+      })
+    }
   }
 
   render() {
@@ -120,7 +126,7 @@ export default class CreateCustomer extends Component {
                   type="email"
                   className='form-control'
                   name="email"
-                  placeholder="Enter a email address that you are currently using"
+                  placeholder="Enter your email address"
                   value={this.state.email}
                   onChange={this.onChange}
                   required
@@ -171,6 +177,7 @@ export default class CreateCustomer extends Component {
                   <i className='far fa-check-square'></i>
                   &nbsp; Register
                 </button>
+                <a href='/customer/login'> Back to Login </a>
               </div>
 
             </form>

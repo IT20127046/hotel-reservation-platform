@@ -40,19 +40,26 @@ router.post('/customer/registration', (req, res) => {
                         })
                         .catch(err => {
                             // console.log("catch")
-                            res.status(400).send("error" + err);
+                            res.status(400).json({
+                                errorMessage: 'Something went wrong!',
+                                status: false
+                              });
                         });
                 })
 
             }
             else {
-                res.status(400).json({
-                    error: "Your NIC number is already registered"
-                })
+                return res.status(401).json({
+                    errorMessage: 'You already have an account',
+                    status: false
+                }); 
             }
         })
         .catch(err => {
-            res.send("error" + err)
+            res.status(400).json({
+                errorMessage: 'Something went wrong!',
+                status: false
+              });
         })
 })
 
