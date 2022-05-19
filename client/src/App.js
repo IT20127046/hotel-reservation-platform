@@ -33,6 +33,7 @@ import LandingPage from './components/IT20125202/LandingPage';
 import SysAdminHome from './components/IT20125202/SysAdminHome';
 import Customers from './components/IT20125202/Customers';
 import TaxiServiceAlert from './components/TaxiServiceAlert';
+import BookTaxi from './components/BookTaxi';
 
 
 
@@ -73,6 +74,7 @@ export default class App extends Component {
             <Route path="/msg/send" exact component={TestSMSService}></Route>
             <Route path="/taxi" exact component={TaxiService}></Route>
             <Route path="/taxi/alert" exact component={TaxiServiceAlert}></Route>
+            <Route path="/taxi/book" exact component={BookTaxi}></Route>
 
           
             <Route path="/customer/register" exact component={CreateCustomer}></Route>
