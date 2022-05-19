@@ -6,6 +6,8 @@ import EditRoomDetails from './components/EditRoomDetails';
 import ReserveRoom from './components/ReserveRoom';
 import CreateHotel from './components/CreateHotel';
 import EditHotelDetails from './components/EditHotelDetails';
+import Payment from './components/Payment'
+
 
 import addReservedRoom from './components/addReservedRoom';
 import viewReservedRoom from './components/viewReservedRoom';
@@ -37,8 +39,11 @@ import TaxiServiceAlert from './components/TaxiServiceAlert';
 export default class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter>           
+           
+
           <div>          
+          <Route path="/payment" component={Payment}></Route> 
             <Route path="/rooms" component={ViewRoomDetails}></Route>
             <Route path="/room/add" component={CreateRoomDetails}></Route>
             <Route path="/edit/:id" component={EditRoomDetails}></Route>
@@ -83,7 +88,7 @@ export default class App extends Component {
 
           </div>
       </BrowserRouter>
-      
+     
     )
   }
 }

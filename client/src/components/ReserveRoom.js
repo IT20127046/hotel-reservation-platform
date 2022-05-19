@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import logo from '../images/img.jpg';
+
 
 export default class ViewRoomDetails extends Component {
   constructor(props) {
@@ -52,7 +52,8 @@ export default class ViewRoomDetails extends Component {
               <th scope="col">Room No</th>
               <th scope="col">Floor</th>
               <th scope="col">Room Type</th>
-              <th scope="col">Rent (Rs)</th>              
+              <th scope="col">Rent ($)</th>   
+              <th scope="col">Status</th>            
               <th scope="col">Action</th>             
          
             </tr>
@@ -66,18 +67,21 @@ export default class ViewRoomDetails extends Component {
                 <td >{roomdetails.roomno}</td>
                 <td>{roomdetails.floor} </td>  
                 <td>{roomdetails.roomtype} </td> 
-                <td>{roomdetails.rent} </td>               
+                <td>{roomdetails.rent} </td> 
+                <td>{roomdetails.status} </td>                 
               
 
-
-
                 <td >                 
+
+                  <a className="btn btn-outline-success" href={`/payment/${roomdetails.rent}`}/>
+
                 
                   <a className="btn btn-outline-info" href={`/booked/view/${roomdetails.roomno}`}>
                     <i className="fa fa-check"></i>&nbsp;Allotted Days
                   </a>
                   &nbsp;    
                   <a className="btn btn-outline-success" href={`/reservedrooms/add/${roomdetails._id}`}>
+
                     <i className="fa fa-bed"></i>&nbsp;Reserve
                   </a>
                   &nbsp;                
