@@ -3,11 +3,13 @@ const res = require("express/lib/response");
 const room = require("../models/roomModel");
 const router = express.Router();
 
+
+
 //save Room Details
 
-router.post("/room/save", (req, res) => {
+router.post("/room/save",(req, res) => {
   let newRoom = new room(req.body);
-
+ 
   newRoom.save((err) => {
     if (err) {
       return res.status(400).json({

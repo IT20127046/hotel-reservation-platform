@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-
-export default class CreateRoomDetails extends Component {
+export default class EditReservedRoomDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,9 +10,9 @@ export default class CreateRoomDetails extends Component {
       floor: "",
       roomtype: "",
       rent: "",
-    
-    }; 
- 
+      date: "",
+      type: "",
+    };
   }
 
   handleInputChange = (e) => {
@@ -33,61 +32,80 @@ export default class CreateRoomDetails extends Component {
       [name]: value,
     });
   };
-  
 
   onSubmit = (e) => {
     e.preventDefault();
+    const id = this.props.match.params.id;
 
-
-    const {  hotelid, roomno, floor, roomtype, rent  } = this.state;
+    const { hotelid, roomno, floor, roomtype, rent, date, type } = this.state;
 
     const data = {
       hotelid: hotelid,
       roomno: roomno,
       floor: floor,
       roomtype: roomtype,
-      rent: rent,  
-    
+      rent: rent,
+      date: date,
+      type: type,
+      status: "Reserved",
     };
-    
-
 
     console.log(data);
 
-    axios.post("http://localhost:5000/room/save", data).then((res) => {
-      if (res.data.success) { 
-        alert("Hotel Room Created Successfully");
-        window.location ="/rooms"      
-                      
+    axios
+      .put(`http://localhost:5000/reservedroom/update/${id}`, data)
+      .then((res) => {
+        if (res.data.success) {
+          alert("Updated Successfully");
+          window.location = "/reservedrooms/view";
+
+          this.setState({
+            hotelid: "",
+            roomno: "",
+            floor: "",
+            roomtype: "",
+            rent: "",
+          });
+        }
+      });
+  };
+
+  componentDidMount() {
+    const id = this.props.match.params.id;
+
+    axios.get(`http://localhost:5000/reservedroom/${id}`).then((res) => {
+      if (res.data.success) {
         this.setState({
-          hotelid:"",
-          roomno: "",
-          floor: "",
-          roomtype: "",
-          rent: "",
-        
-        
+          hotelid: res.data.roomdetails.hotelid,
+          roomno: res.data.roomdetails.roomno,
+          floor: res.data.roomdetails.floor,
+          roomtype: res.data.roomdetails.roomtype,
+          rent: res.data.roomdetails.rent,
+          date: res.data.roomdetails.date,
+          type: res.data.roomdetails.type,
         });
+
+        console.log(this.state.roomdetails);
       }
     });
-  };
+  }
 
   render() {
     return (
       <div>
-     <div className="container border border-dark  mt-5 col-md-6">
+        <div className="container border border-dark  mt-5 col-md-6">
           <div className="form-group row">
             <div className="col-lg-12 margin-tb">
               <div>
                 &nbsp;
-                <h2 className="text-center">Add Hotel Room Details</h2>
+                <h2 className="text-center">Edit Reserved Room</h2>
                 &nbsp;
               </div>
             </div>
           </div>
 
           <form onSubmit={this.onSubmit}>
-          <div className="row ">
+            <div className="row ">
               <div className="col-md-12">
                 <div className="form-group">
                   <strong>Hotel ID :</strong>
@@ -101,6 +119,7 @@ export default class CreateRoomDetails extends Component {
                     value={this.state.hotelid}
                     onChange={this.handleInputChange}
                     required
+                    disabled
                   />
                 </div>
               </div>
@@ -120,6 +139,7 @@ export default class CreateRoomDetails extends Component {
                     value={this.state.roomno}
                     onChange={this.handleInputChange}
                     required
+                    disabled
                   />
                 </div>
               </div>
@@ -137,6 +157,7 @@ export default class CreateRoomDetails extends Component {
                     value={this.state.floor}
                     onChange={this.handleInputChange}
                     required
+                    disabled
                   />
                 </div>
               </div>
@@ -146,11 +167,17 @@ export default class CreateRoomDetails extends Component {
               <div className="col-md-12">
                 <div className="form-group">
                   <strong>Room Type:</strong>
-                  <select className="form-control" name ="roomtype" value={this.state.roomtype}  onChange={this.handleChange} >
-                      <option value ="Not">Not Selected</option>
-                      <option value ="Single Room">Single Room </option>
-                      <option value ="Double Room"> Double Room </option>
-                    </select>
+                  <select
+                    className="form-control"
+                    name="roomtype"
+                    value={this.state.roomtype}
+                    onChange={this.handleChange}
+                    disabled
+                  >
+                    <option value="Not">Not Selected</option>
+                    <option value="Single Room">Single Room </option>
+                    <option value="Double Room"> Double Room </option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -162,20 +189,58 @@ export default class CreateRoomDetails extends Component {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Enter Rent ($)"
+                    placeholder="Enter Rent (Rs)"
                     name="rent"
                     value={this.state.rent}
+                    onChange={this.handleInputChange}
+                    required
+                    disabled
+                  />
+                </div>
+              </div>
+            </div>
+            &nbsp; &nbsp;
+            <div className="row ">
+              <div className="col-md-12">
+                <div className="form-group">
+                  <strong>Date :</strong>
+                  <input
+                    type="date"
+                    className="form-control"
+                    name="date"
+                    value={this.state.date}
                     onChange={this.handleInputChange}
                     required
                   />
                 </div>
               </div>
             </div>
-             &nbsp; &nbsp;          
+            &nbsp; &nbsp;
+            <div className="row ">
               <div className="col-md-12">
+                <div className="form-group">
+                  <strong>Food :</strong>
+
+                  <select
+                    className="form-select"
+                    name="type"
+                    value={this.state.type}
+                    onChange={this.handleInputChange}
+                  >
+                    <option type="not selected yet" selected>
+                      Select Type
+                    </option>
+                    <option type="With Foods">With Foods</option>
+                    <option type="Without Foods">Without Foods</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            &nbsp; &nbsp;
+            <div className="col-md-12">
               <div className="form-group">
-              <button className="btn btn-outline-success" type="submit">
-                  <i className="fa fa-save"> Save </i>
+                <button className="btn btn-outline-success" type="submit">
+                  <i className="fa fa-edit"> Update </i>
                 </button>
               </div>
             </div>

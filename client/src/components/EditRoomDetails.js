@@ -11,6 +11,7 @@ export default class EditRoomDetails extends Component {
       floor: "",
       roomtype: "",
       rent: "",
+      
   
     }; 
  
@@ -47,6 +48,7 @@ export default class EditRoomDetails extends Component {
       floor: floor,
       roomtype: roomtype,
       rent: rent,
+    
      
     };
     
@@ -57,6 +59,7 @@ export default class EditRoomDetails extends Component {
     axios.put(`http://localhost:5000/room/update/${id}`, data).then((res) => {
       if (res.data.success) { 
         alert("Hotel Room Updated Successfully");
+        window.location ="/rooms"
                    
         this.setState({
           hotelid:"",
@@ -64,6 +67,7 @@ export default class EditRoomDetails extends Component {
           floor: "",
           roomtype: "",
           rent: "",
+         
          
         });
       }
@@ -82,6 +86,7 @@ export default class EditRoomDetails extends Component {
          floor:res.data.roomdetails.floor,
          roomtype:res.data.roomdetails.roomtype,
          rent:res.data.roomdetails.rent
+         
          
 
 
@@ -183,7 +188,7 @@ export default class EditRoomDetails extends Component {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Enter Rent (Rs)"
+                    placeholder="Enter Rent ($)"
                     name="rent"
                     value={this.state.rent}
                     onChange={this.handleInputChange}
@@ -191,8 +196,8 @@ export default class EditRoomDetails extends Component {
                   />
                 </div>
               </div>
-            </div>
-            &nbsp;
+            </div>            
+            &nbsp; &nbsp;   
             <div className="col-md-12">
               <div className="form-group">
                 <button className="btn btn-outline-success" type="submit">

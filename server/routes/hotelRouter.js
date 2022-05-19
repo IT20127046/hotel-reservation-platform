@@ -137,13 +137,15 @@ router.post('/hotel/add', (req, res) => {
                           // console.log("then")
                           
                           res.status(200).json({
-                              success: "Registered successfully"
+                              success: true
                           })
                           
                       })
                       .catch(err => {
                           // console.log("catch")
-                          res.status(400).send("error" + err);
+                          res.status(400).json({
+                            success: true
+                        });
                       });
               })
 

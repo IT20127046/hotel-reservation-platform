@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import logo from '../images/img.jpg';
+import logo from "../images/img.jpg";
+
 
 export default class ViewRoomDetails extends Component {
   constructor(props) {
@@ -48,12 +49,12 @@ export default class ViewRoomDetails extends Component {
           <thead>
           <tr className = "">
               <th scope="col">No</th>
-              <th scope="col">Photo</th>
+              <th scope="col">Photo</th>             
               <th scope="col">Hotel ID</th>
               <th scope="col">Room No</th>
               <th scope="col">Floor</th>
               <th scope="col">Room Type</th>
-              <th scope="col">Rent (Rs)</th>              
+              <th scope="col">Rent ($)</th>              
               <th scope="col">Action</th>             
          
             </tr>
@@ -63,19 +64,27 @@ export default class ViewRoomDetails extends Component {
             {this.state.roomdetails.map((roomdetails, index) => (
               <tr>
                 <th >{index + 1}</th>
-                <img src={logo} width="250" height="150" />  
+                <img src={logo} width="250" height="150" />              
                 <td>{roomdetails.hotelid} </td>
                 <td >{roomdetails.roomno}</td>
                 <td>{roomdetails.floor} </td>  
                 <td>{roomdetails.roomtype} </td> 
-                <td>{roomdetails.rent} </td>               
+                <td>{roomdetails.rent} </td> 
+                               
               
 
-                <td >                 
-                  <a className="btn btn-outline-success" href="">
+                <td >          
+
+                                  
+                  <a className="btn btn-outline-info" href={`/booked/view/${roomdetails.roomno}`}>
+                    <i className="fa fa-check"></i>&nbsp;Allotted Days
+                  </a>
+                  &nbsp;    
+                  <a className="btn btn-outline-success" href={`/reservedrooms/add/${roomdetails._id}`}>
+
                     <i className="fa fa-bed"></i>&nbsp;Reserve
                   </a>
-                  &nbsp;                  
+                  &nbsp;                
                 </td>
               </tr>
             ))}
