@@ -4,8 +4,8 @@ const service = express.Router();
 const Vonage = require("@vonage/server-sdk");
 
 const vonage = new Vonage({
-  apiKey: "23f7777e",
-  apiSecret: "iMvdDk3VLcmAFLWf",
+  apiKey: process.env.SMS_VONAGE_API_KEY,
+  apiSecret: process.env.SMS_VOANGE_API_SECRET,
 });
 
 service.post("/sms/send", (req, res) => {
