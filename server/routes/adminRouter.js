@@ -27,7 +27,6 @@ router.post('/admin', async (req, res) => {
 			},
 			'secret2022'
 		)
-
 		return res.json({ status: 'ok', admin: token })
 	} else {
 		return res.json({ status: 'error', admin: false })
