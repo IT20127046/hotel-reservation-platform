@@ -39,13 +39,13 @@ export default class App extends Component {
             <Route path="/room/reserve" component={ReserveRoom}></Route>
 
 
-            <Route path="/addreserved/:id" component={addReservedRoom}></Route>
-            <Route path="/viewreservedrooms" component={viewReservedRoom}></Route>
+            <Route path="/reservedrooms/add/:id" component={addReservedRoom}></Route>
+            <Route path="/reservedrooms/view" component={viewReservedRoom}></Route>
            
-            <Route path="/editreserved/:id" component={EditReservedRoomDetails}></Route>
-            <Route path="/viewbooked/:id" component={viewBookedDetails}></Route>
-            <Route path="/sendmail" component={sendmail}></Route>
-            <Route path="/viewallbooked" component={viewallBookedDetails}></Route>
+            <Route path="/reservedrooms/edit/:id" component={EditReservedRoomDetails}></Route>
+            <Route path="/booked/view/:id" component={viewBookedDetails}></Route>
+            <Route path="/mail/send" component={sendmail}></Route>
+            <Route path="/allbooked/view" component={viewallBookedDetails}></Route>
 
 
 

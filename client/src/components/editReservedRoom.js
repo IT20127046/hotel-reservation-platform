@@ -57,7 +57,7 @@ export default class EditReservedRoomDetails extends Component {
       .then((res) => {
         if (res.data.success) {
           alert("Updated Successfully");
-          window.location = "/viewreservedrooms";
+          window.location = "/reservedrooms/view";
 
           this.setState({
             hotelid: "",

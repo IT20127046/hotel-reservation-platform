@@ -61,7 +61,7 @@ export default class addReservedRoom extends Component {
             this.setState({ validatedate: true });
             alert("Select Another Date");
             console.log("Check ");
-            window.location = "/viewallbooked";
+            window.location = "/allbooked/view";
           }
         });
 
@@ -72,7 +72,7 @@ export default class addReservedRoom extends Component {
             .post("http://localhost:5000/reservedroom/save", data)
             .then((res) => {
               if (res.data.success) {
-                window.location = "/viewreservedrooms";
+                window.location = "/reservedrooms/view";
                 alert("Successfully Reserved a Room");
                 this.setState({
                   hotelid: "",
@@ -225,7 +225,7 @@ export default class addReservedRoom extends Component {
                     onClick={this.onSubmit}
                   >
                     <i className="far fa-check-square"></i>
-                    &nbsp; Book Room
+                    &nbsp; Reserve a Room
                   </button>
                 </form>
               </div>

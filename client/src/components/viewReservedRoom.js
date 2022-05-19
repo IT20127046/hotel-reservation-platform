@@ -83,7 +83,7 @@ export default class viewReservedRoom extends Component {
                     </a>
                     <a
                       className="btn btn-outline-warning"
-                      href={`/editreserved/${roomreserveddetails._id}`}
+                      href={`/reservedrooms/edit/${roomreserveddetails._id}`}
                     >
                       <i className="fa fa-edit"></i>&nbsp;Edit
                     </a>
