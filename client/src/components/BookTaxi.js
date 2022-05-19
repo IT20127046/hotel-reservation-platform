@@ -139,6 +139,7 @@ export default class BookTaxi extends Component {
               <button className="btn btn-dark" type="submit">Send</button>
               </div>
           </form>
+
           <br/>
           <a className="btn btn-dark" href={"/taxi"}>
             <i></i>&nbsp;Reserve a Taxi

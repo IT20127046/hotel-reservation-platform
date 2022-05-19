@@ -93,6 +93,7 @@ export default class HotelAdminLogin extends Component {
                                 >
                                     Login
                                 </button>
+                                <a href='/add/hotel'> Not a registered user</a>
                             </div>
                         </form>
                     </div>

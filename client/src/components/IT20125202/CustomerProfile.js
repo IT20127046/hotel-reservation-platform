@@ -37,7 +37,7 @@ export default class CustomerProfile extends Component {
         return (
         <div>
             <NavBarCus />
-            <div style={{ margin: '20px' }}>
+            <div style={{ margin: '50px' }}>
                     <h3>User Details</h3>
                     <hr />
 

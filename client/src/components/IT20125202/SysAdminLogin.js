@@ -69,6 +69,7 @@ function SysAdminLogin() {
                             <button className="btn btn-outline-success" type="submit" style={{marginTop: '15px', width: 'cover'}} onClick={loginAdmin}>
                                 Login
                             </button>
+                            <a style={{textAlign: "right"}} href='/'> Back</a>
                             </div>
                         </form>
                 </div>
