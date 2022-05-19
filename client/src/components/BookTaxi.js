@@ -45,7 +45,7 @@ export default class BookTaxi extends Component {
           
         };
 
-        axios.post("http://localhost:5000/", msgData).then((res) => {
+        axios.post("http://localhost:5000/sms/send", msgData).then((res) => {
         if (res.data.success) {
             console.log('SMS Send Successfull');
         }
