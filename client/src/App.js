@@ -32,8 +32,11 @@ import CustomerProfile from './components/IT20125202/CustomerProfile';
 import LandingPage from './components/IT20125202/LandingPage';
 import SysAdminHome from './components/IT20125202/SysAdminHome';
 import Customers from './components/IT20125202/Customers';
+import AboutUs from './components/IT20125202/AboutUs';
+
 import TaxiServiceAlert from './components/TaxiServiceAlert';
 import BookTaxi from './components/BookTaxi';
+import viewemails from './components/viewEmailDetails';
 
 
 
@@ -56,8 +59,10 @@ export default class App extends Component {
            
             <Route path="/reservedrooms/edit/:id" component={EditReservedRoomDetails}></Route>
             <Route path="/booked/view/:id" component={viewBookedDetails}></Route>
-            <Route path="/mail/send" component={sendmail}></Route>
+            <Route path="/mail/send/:id" component={sendmail}></Route>
             <Route path="/allbooked/view" component={viewallBookedDetails}></Route>
+            <Route path="/emails/view" component={viewemails}></Route>
+
 
 
 
@@ -76,6 +81,7 @@ export default class App extends Component {
             <Route path="/taxi/alert/:id" exact component={TaxiServiceAlert}></Route>
             <Route path="/taxi/book" exact component={BookTaxi}></Route>
 
+
           
             <Route path="/customer/register" exact component={CreateCustomer}></Route>
             <Route path="/customer/login" exact component={CustomerLogin}></Route>
@@ -86,6 +92,7 @@ export default class App extends Component {
             <Route path="/" exact component={LandingPage}></Route>
             <Route path="/adminhome" exact component={SysAdminHome}></Route>
             <Route path="/customers" exact component={Customers}></Route>
+            <Route path="/aboutus" exact component={AboutUs}></Route>
 
 
           </div>

@@ -48,7 +48,7 @@ export default class sendmail extends Component {
       if (res.data.success) { 
         alert("Email Sent Successfully");
 
-         window.location ="/sendmail"
+         window.location ="/emails/view"
        
         
         
@@ -62,6 +62,35 @@ export default class sendmail extends Component {
       }
     });
   };
+
+
+
+
+
+
+
+  componentDidMount() {
+    const id = this.props.match.params.id;
+    console.log(id);
+
+    axios.get(`http://localhost:5000/email/${id}`).then((res) => {
+      if (res.data.success) {
+        console.log(res.data.mailsdata.email);
+        this.setState({
+          email: res.data.mailsdata.email,
+          subject: res.data.mailsdata.subject,
+          message: res.data.mailsdata.message,
+       
+        });
+        console.log(this.state);
+      }
+    });
+  }
+  
+
+
+
+
 
   render() {
     return (
