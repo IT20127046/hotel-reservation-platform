@@ -41,7 +41,7 @@ export default class Customers extends Component {
         {
           label: 'Yes',
           onClick: () =>
-            axios.delete(`http://localhost:5000/user/delete/${id}`).then((res) => {
+            axios.delete(`http://localhost:5000/customer/delete/${id}`).then((res) => {
               alert("Deleted Successfully!");
               this.retrieveUsers();
             })
@@ -59,7 +59,7 @@ export default class Customers extends Component {
 
     const searchKey = e.currentTarget.value;
 
-    axios.get('http://localhost:5000/users').then(res => {
+    axios.get('http://localhost:5000/customers').then(res => {
       if (res.data.success) {
 
         this.filterData(res.data.existingUsers, searchKey);
@@ -70,20 +70,20 @@ export default class Customers extends Component {
 
   filterData(users, searchKey) {
     const searchResult = users.filter((user) =>
-      user.idNumber.toLowerCase().includes(searchKey) ||
-      user.name.toLowerCase().includes(searchKey) ||
-      user.type.toLowerCase().includes(searchKey) ||
-      user.groupId.toLowerCase().includes(searchKey) ||
+      user.firstName.toLowerCase().includes(searchKey) ||
+      user.lastName.toLowerCase().includes(searchKey) ||
+      user.email.toLowerCase().includes(searchKey) ||
+      user.country.toLowerCase().includes(searchKey) ||
 
-      user.idNumber.toUpperCase().includes(searchKey) ||
-      user.name.toUpperCase().includes(searchKey) ||
-      user.type.toUpperCase().includes(searchKey) ||
-      user.groupId.toUpperCase().includes(searchKey) ||
+      user.firstName.toUpperCase().includes(searchKey) ||
+      user.lastName.toUpperCase().includes(searchKey) ||
+      user.email.toUpperCase().includes(searchKey) ||
+      user.country.toUpperCase().includes(searchKey) ||
 
-      user.idNumber.includes(searchKey) ||
-      user.name.includes(searchKey) ||
-      user.type.includes(searchKey) ||
-      user.groupId.includes(searchKey) 
+      user.firstName.includes(searchKey) ||
+      user.lastName.includes(searchKey) ||
+      user.email.includes(searchKey) ||
+      user.country.includes(searchKey) 
     )
 
     this.setState({

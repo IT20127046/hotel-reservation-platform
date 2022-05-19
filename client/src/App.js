@@ -18,6 +18,7 @@ import CustomerProfile from './components/IT20125202/CustomerProfile';
 import LandingPage from './components/IT20125202/LandingPage';
 import SysAdminHome from './components/IT20125202/SysAdminHome';
 import Customers from './components/IT20125202/Customers';
+import AboutUs from './components/IT20125202/AboutUs';
 
 export default class App extends Component {
   render() {
@@ -45,6 +46,7 @@ export default class App extends Component {
             <Route path="/" exact component={LandingPage}></Route>
             <Route path="/adminhome" exact component={SysAdminHome}></Route>
             <Route path="/customers" exact component={Customers}></Route>
+            <Route path="/aboutus" exact component={AboutUs}></Route>
 
           </div>
       </BrowserRouter>
