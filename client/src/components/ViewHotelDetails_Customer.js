@@ -75,7 +75,7 @@ export default class ViewHotelDetails_Customer extends Component {
                                     <p>{hotelData.address}</p>
                                     <p>{hotelData.teleNo}</p>
                                 </div>
-                                <a className="m-2 btn btn-outline-success" href={`/viewreservedrooms/${hotelData.hotelID}`}>
+                                <a className="m-2 btn btn-outline-success" href={`/room/reserve/${hotelData.hotelID}`}>
                                   View Rooms
                                 </a>
                                 <br />

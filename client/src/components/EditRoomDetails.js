@@ -11,7 +11,7 @@ export default class EditRoomDetails extends Component {
       floor: "",
       roomtype: "",
       rent: "",
-      status:"",
+      
   
     }; 
  
@@ -40,7 +40,7 @@ export default class EditRoomDetails extends Component {
     e.preventDefault();
     const id = this.props.match.params.id;
 
-    const { hotelid ,roomno, floor, roomtype, rent ,status} = this.state;
+    const { hotelid ,roomno, floor, roomtype, rent } = this.state;
 
     const data = {
       hotelid:hotelid,
@@ -48,7 +48,7 @@ export default class EditRoomDetails extends Component {
       floor: floor,
       roomtype: roomtype,
       rent: rent,
-      status:status,
+    
      
     };
     
@@ -67,7 +67,7 @@ export default class EditRoomDetails extends Component {
           floor: "",
           roomtype: "",
           rent: "",
-          status:"",
+         
          
         });
       }
@@ -85,8 +85,8 @@ export default class EditRoomDetails extends Component {
         roomno:res.data.roomdetails.roomno,
          floor:res.data.roomdetails.floor,
          roomtype:res.data.roomdetails.roomtype,
-         rent:res.data.roomdetails.rent,
-         status:res.data.roomdetails.status
+         rent:res.data.roomdetails.rent
+         
          
 
 
@@ -196,20 +196,7 @@ export default class EditRoomDetails extends Component {
                   />
                 </div>
               </div>
-            </div>
-            &nbsp; &nbsp;
-            <div className="row ">
-              <div className="col-md-12">
-                <div className="form-group">
-                  <strong>Status:</strong>
-                  <select className="form-control" name ="status" value={this.state.status}  onChange={this.handleChange} >
-                      <option value ="Not">Not Selected</option>
-                      <option value ="Available">Available </option>
-                      <option value ="Reserved"> Reserved </option>
-                    </select>
-                </div>
-              </div>
-            </div>
+            </div>            
             &nbsp; &nbsp;   
             <div className="col-md-12">
               <div className="form-group">

@@ -60,9 +60,7 @@ export default class viewReservedRoom extends Component {
             <tr className="">
               <th scope="col">No</th>
               <th scope="col">Photo</th>
-
               <th scope="col">Room No</th>
-
               <th scope="col">Room Type</th>
               <th scope="col">Rent (Rs)</th>
               <th scope="col">Date</th>
@@ -77,18 +75,15 @@ export default class viewReservedRoom extends Component {
                 <tr>
                   <th>{index + 1}</th>
                   <img src={logo} width="250" height="150" />
-
                   <td>{roomreserveddetails.roomno}</td>
-
                   <td>{roomreserveddetails.roomtype} </td>
                   <td>{roomreserveddetails.rent} </td>
                   <td>{roomreserveddetails.date} </td>
                   <td>{roomreserveddetails.type} </td>
-
                   <td className="text-center">
                     <a
                       className="btn btn-outline-success"
-                      href={`/addpayment/${roomreserveddetails._id}`}
+                      href={`/payment/${roomreserveddetails.rent}`}
                     >
                       <i className="fa fa-credit-card"></i>&nbsp;Pay
                     </a>
