@@ -7,8 +7,11 @@ import {
   OutlinedInput,
 } from "@mui/material";
 
+
+
 function App() {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState();
+
   const [name, setName] = useState();
 
   const handleToken = (token) => {
@@ -54,14 +57,14 @@ function App() {
           <div className="col-lg-12 margin-tb">
             <div>
               &nbsp;
-              <h2 className="text-center">Pay Your Bill</h2>
+              <h2 className="text-center">Credit Card Payment</h2>
               &nbsp;
             </div>
           </div>
         </div>
 
-        <form className="py-3">
-          <FormControl sx={{ m: 1 }} className="col-md-12">
+        <form className="py-3">    
+           <FormControl sx={{ m: 1 }} className="col-md-12">
             <InputLabel htmlFor="outlined-adornment-holdername">
               Card Holder Name
             </InputLabel>
