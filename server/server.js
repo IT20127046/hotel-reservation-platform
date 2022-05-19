@@ -26,8 +26,8 @@ const adminRouter = require("./routes/adminRouter");
 
 
 const emailrouter = require("./services/EmailServiceApi");
-const customerRouter = require("./routes/customerRouter");
-const adminRouter = require("./routes/adminRouter");
+
+
 
 
 app.use(bodyparser.json());
