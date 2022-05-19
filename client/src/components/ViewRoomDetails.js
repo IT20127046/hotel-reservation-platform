@@ -51,9 +51,8 @@ export default class ViewRoomDetails extends Component {
               <th scope="col">Room No</th>
               <th scope="col">Floor</th>
               <th scope="col">Room Type</th>
-              <th scope="col">Rent ($)</th>   
-              <th scope="col">Status</th>            
-              <th scope="col">Action</th>      
+              <th scope="col">Rent ($)</th> 
+             <th scope="col">Action</th>      
             </tr>
           </thead>
 
@@ -65,8 +64,7 @@ export default class ViewRoomDetails extends Component {
                 <td >{roomdetails.roomno}</td>
                 <td>{roomdetails.floor} </td>  
                 <td>{roomdetails.roomtype} </td> 
-                <td>{roomdetails.rent} </td> 
-                <td>{roomdetails.status} </td>  
+                <td>{roomdetails.rent} </td>                
                 <td >                 
                   <a className="btn btn-outline-success" href={`/edit/${roomdetails._id}`}>
                     <i className="fa fa-edit"></i>&nbsp;Edit
