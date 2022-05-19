@@ -11,6 +11,7 @@ export default class CreateRoomDetails extends Component {
       floor: "",
       roomtype: "",
       rent: "",
+      status:"",
      
     }; 
  
@@ -39,14 +40,15 @@ export default class CreateRoomDetails extends Component {
     e.preventDefault();
 
 
-    const {  hotelid, roomno, floor, roomtype, rent } = this.state;
+    const {  hotelid, roomno, floor, roomtype, rent ,status } = this.state;
 
     const data = {
       hotelid: hotelid,
       roomno: roomno,
       floor: floor,
       roomtype: roomtype,
-      rent: rent,     
+      rent: rent,  
+      status:status,   
     };
     
 
@@ -56,17 +58,15 @@ export default class CreateRoomDetails extends Component {
     axios.post("http://localhost:5000/room/save", data).then((res) => {
       if (res.data.success) { 
         alert("Hotel Room Created Successfully");
-
-         window.location ="/rooms"
-       
-        
-        
+        window.location ="/rooms"      
+                      
         this.setState({
           hotelid:"",
           roomno: "",
           floor: "",
           roomtype: "",
           rent: "",
+          status:"",
         
         });
       }
@@ -163,12 +163,25 @@ export default class CreateRoomDetails extends Component {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Enter Rent (Rs)"
+                    placeholder="Enter Rent ($)"
                     name="rent"
                     value={this.state.rent}
                     onChange={this.handleInputChange}
                     required
                   />
+                </div>
+              </div>
+            </div>
+            &nbsp; &nbsp;
+            <div className="row ">
+              <div className="col-md-12">
+                <div className="form-group">
+                  <strong>Status:</strong>
+                  <select className="form-control" name ="status" value={this.state.status}  onChange={this.handleChange} >
+                      <option value ="Not">Not Selected</option>
+                      <option value ="Available">Available </option>
+                      <option value ="Reserved"> Reserved </option>
+                    </select>
                 </div>
               </div>
             </div>

@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
 const cors = require("cors");
+const payment = require('./routes/payment');
 
 require("dotenv").config();
 
@@ -24,6 +25,10 @@ app.use(cors());
 app.use(roomrouter);
 app.use(hotelRouter);
 app.use(reservedroomRouter);
+
+//payment gateway
+app.use(express.json());
+app.use('/payment', payment);
 
 
 const port = process.env.PORT || 5000;

@@ -11,6 +11,7 @@ export default class EditRoomDetails extends Component {
       floor: "",
       roomtype: "",
       rent: "",
+      status:"",
   
     }; 
  
@@ -39,7 +40,7 @@ export default class EditRoomDetails extends Component {
     e.preventDefault();
     const id = this.props.match.params.id;
 
-    const { hotelid ,roomno, floor, roomtype, rent } = this.state;
+    const { hotelid ,roomno, floor, roomtype, rent ,status} = this.state;
 
     const data = {
       hotelid:hotelid,
@@ -47,6 +48,7 @@ export default class EditRoomDetails extends Component {
       floor: floor,
       roomtype: roomtype,
       rent: rent,
+      status:status,
      
     };
     
@@ -57,6 +59,7 @@ export default class EditRoomDetails extends Component {
     axios.put(`http://localhost:5000/room/update/${id}`, data).then((res) => {
       if (res.data.success) { 
         alert("Hotel Room Updated Successfully");
+        window.location ="/rooms"
                    
         this.setState({
           hotelid:"",
@@ -64,6 +67,7 @@ export default class EditRoomDetails extends Component {
           floor: "",
           roomtype: "",
           rent: "",
+          status:"",
          
         });
       }
@@ -81,7 +85,8 @@ export default class EditRoomDetails extends Component {
         roomno:res.data.roomdetails.roomno,
          floor:res.data.roomdetails.floor,
          roomtype:res.data.roomdetails.roomtype,
-         rent:res.data.roomdetails.rent
+         rent:res.data.roomdetails.rent,
+         status:res.data.roomdetails.status
          
 
 
@@ -183,7 +188,7 @@ export default class EditRoomDetails extends Component {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Enter Rent (Rs)"
+                    placeholder="Enter Rent ($)"
                     name="rent"
                     value={this.state.rent}
                     onChange={this.handleInputChange}
@@ -192,7 +197,20 @@ export default class EditRoomDetails extends Component {
                 </div>
               </div>
             </div>
-            &nbsp;
+            &nbsp; &nbsp;
+            <div className="row ">
+              <div className="col-md-12">
+                <div className="form-group">
+                  <strong>Status:</strong>
+                  <select className="form-control" name ="status" value={this.state.status}  onChange={this.handleChange} >
+                      <option value ="Not">Not Selected</option>
+                      <option value ="Available">Available </option>
+                      <option value ="Reserved"> Reserved </option>
+                    </select>
+                </div>
+              </div>
+            </div>
+            &nbsp; &nbsp;   
             <div className="col-md-12">
               <div className="form-group">
                 <button className="btn btn-outline-success" type="submit">
