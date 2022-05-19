@@ -73,7 +73,7 @@ export default class App extends Component {
 
             <Route path="/msg/send" exact component={TestSMSService}></Route>
             <Route path="/taxi" exact component={TaxiService}></Route>
-            <Route path="/taxi/alert" exact component={TaxiServiceAlert}></Route>
+            <Route path="/taxi/alert/:id" exact component={TaxiServiceAlert}></Route>
             <Route path="/taxi/book" exact component={BookTaxi}></Route>
 
           
