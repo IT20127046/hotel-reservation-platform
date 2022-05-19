@@ -12,7 +12,9 @@ export default class CreateHotel extends Component {
         city: "",
         address: "",
         teleNo: "",
-        description: ""
+        description: "",
+        email: "",
+        password: ""
     }; 
  
   }
@@ -39,10 +41,12 @@ export default class CreateHotel extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-
-    const { hotelID, hotelName, district, city, address, teleNo, description } = this.state;
+  
+    const { hotelID, hotelName, district, city, address, teleNo, description, email, password } = this.state;
 
     const data = {
+      email: email,
+      password: password,
       hotelID: hotelID,
       hotelName: hotelName,
       district: district,
@@ -74,7 +78,9 @@ export default class CreateHotel extends Component {
             city: "",
             address: "",
             teleNo: "",
-            description: ""
+            description: "",
+            email: "",
+            password: ""
         });
       }
     });
@@ -94,7 +100,41 @@ export default class CreateHotel extends Component {
             </div>
           </div>
 
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={this.onSubmit} encType="multipart/form-data">
+          <div className="row ">
+              <div className="col-md-12">
+                <div className="form-group">
+                  <strong>Hotel Admin Email :</strong>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Enter Email"
+                    name="email"
+                    value={this.state.email}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            &nbsp;
+            <div className="row ">
+              <div className="col-md-12">
+                <div className="form-group">
+                  <strong>Hotel Admin Password :</strong>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Enter Password"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            &nbsp;
             <div className="row ">
               <div className="col-md-12">
                 <div className="form-group">
@@ -225,7 +265,7 @@ export default class CreateHotel extends Component {
             </div>
             &nbsp;
           </form>
-          <a className="btn btn-outline-danger" href={'/view/hotels'}>
+          <a className="btn btn-outline-danger" href={'/view/admin/hotels'}>
             <i className="fa fa-edit"></i>&nbsp;Back
           </a>
         </div>

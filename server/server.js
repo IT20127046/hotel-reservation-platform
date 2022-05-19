@@ -15,12 +15,26 @@ const hotelRouter = require("./routes/hotelRouter");
 const reservedroomRouter = require("./routes/reservedRoomsRouter");
 
 
+const smsService = require("./services/smsService");
+const taxiService = require("./services/taxiService");
+
+
+const customerRouter = require("./routes/customerRouter");
+const adminRouter = require("./routes/adminRouter");
+
+
+
+
+
+const emailrouter = require("./services/EmailServiceApi");
+
+
 
 
 app.use(bodyparser.json());
 app.use(cors());
 
-//use routers
+//use  routers
 
 app.use(roomrouter);
 app.use(hotelRouter);
@@ -29,6 +43,17 @@ app.use(reservedroomRouter);
 //payment gateway
 app.use(express.json());
 app.use('/payment', payment);
+
+
+app.use(smsService);
+app.use(taxiService);
+
+
+app.use(emailrouter);
+
+
+app.use(customerRouter);
+app.use(adminRouter);
 
 
 const port = process.env.PORT || 5000;

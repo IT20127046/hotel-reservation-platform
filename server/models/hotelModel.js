@@ -9,7 +9,8 @@ const hotelModelSchema = new mongoose.Schema({
   address: { type: String, required: true },
   teleNo: { type: String, required: true },
   description: { type: String, required: true },
-
+  email: {type: String, required: true},
+  password: {type: String, required: true}
 });
 
 module.exports = mongoose.model("hotelDetails", hotelModelSchema);

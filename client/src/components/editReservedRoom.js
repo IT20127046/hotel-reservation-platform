@@ -1,20 +1,18 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-
-export default class EditHotelDetails extends Component {
+export default class EditReservedRoomDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        hotelID: "",
-        hotelName: "",
-        district: "",
-        city: "",
-        address: "",
-        teleNo: "",
-        description: ""
-    }; 
- 
+      hotelid: "",
+      roomno: "",
+      floor: "",
+      roomtype: "",
+      rent: "",
+      date: "",
+      type: "",
+    };
   }
 
   handleInputChange = (e) => {
@@ -34,66 +32,63 @@ export default class EditHotelDetails extends Component {
       [name]: value,
     });
   };
-  
 
   onSubmit = (e) => {
     e.preventDefault();
     const id = this.props.match.params.id;
 
-    const { hotelID, hotelName, district, city, address, teleNo, description } = this.state;
+    const { hotelid, roomno, floor, roomtype, rent, date, type } = this.state;
 
     const data = {
-      hotelID: hotelID,
-      hotelName: hotelName,
-      district: district,
-      city: city,
-      address: address,
-      teleNo: teleNo,
-      description: description
+      hotelid: hotelid,
+      roomno: roomno,
+      floor: floor,
+      roomtype: roomtype,
+      rent: rent,
+      date: date,
+      type: type,
+      status: "Reserved",
     };
 
     console.log(data);
 
-    axios.put(`http://localhost:5000/hotel/update/${id}`, data).then((res) => {
-      if (res.data.success) { 
-        alert("Hotel Details Updated Successfully");
-                   
-        this.setState({
-            hotelID: "",
-            hotelName: "",
-            district: "",
-            city: "",
-            address: "",
-            teleNo: "",
-            description: ""
-        });
-      }
-    });
-  };
+    axios
+      .put(`http://localhost:5000/reservedroom/update/${id}`, data)
+      .then((res) => {
+        if (res.data.success) {
+          alert("Updated Successfully");
+          window.location = "/reservedrooms/view";
 
+          this.setState({
+            hotelid: "",
+            roomno: "",
+            floor: "",
+            roomtype: "",
+            rent: "",
+          });
+        }
+      });
+  };
 
   componentDidMount() {
     const id = this.props.match.params.id;
 
-    axios.get(`http://localhost:5000/hotel/get/${id}`).then((res) => {
+    axios.get(`http://localhost:5000/reservedroom/${id}`).then((res) => {
       if (res.data.success) {
         this.setState({
-            hotelID:res.data.hotelDetails.hotelID,
-            hotelName:res.data.hotelDetails.hotelName,
-            district:res.data.hotelDetails.district,
-            city:res.data.hotelDetails.city,
-            address:res.data.hotelDetails.address,
-            teleNo:res.data.hotelDetails.teleNo,
-            description:res.data.hotelDetails.description
-
-
+          hotelid: res.data.roomdetails.hotelid,
+          roomno: res.data.roomdetails.roomno,
+          floor: res.data.roomdetails.floor,
+          roomtype: res.data.roomdetails.roomtype,
+          rent: res.data.roomdetails.rent,
+          date: res.data.roomdetails.date,
+          type: res.data.roomdetails.type,
         });
 
         console.log(this.state.roomdetails);
       }
     });
   }
-
 
   render() {
     return (
@@ -103,7 +98,7 @@ export default class EditHotelDetails extends Component {
             <div className="col-lg-12 margin-tb">
               <div>
                 &nbsp;
-                <h2 className="text-center">Edit Hotel Details</h2>
+                <h2 className="text-center">Edit Reserved Room</h2>
                 &nbsp;
               </div>
             </div>
@@ -117,13 +112,34 @@ export default class EditHotelDetails extends Component {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Enter Hotel ID - Hxx"
-                    name="hotelID"
+                    placeholder="Enter Hotel ID -Hxx"
+                    name="hotelid"
                     pattern="H[0-9]{2}"
+                    title="Hotel ID is Invalid"
+                    value={this.state.hotelid}
+                    onChange={this.handleInputChange}
+                    required
+                    disabled
+                  />
+                </div>
+              </div>
+            </div>
+            &nbsp;
+            <div className="row ">
+              <div className="col-md-12">
+                <div className="form-group">
+                  <strong>Room No :</strong>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Enter Room No -Rxx"
+                    name="roomno"
+                    pattern="R[0-9]{2}"
                     title="Room No is Invalid"
-                    value={this.state.hotelID}
+                    value={this.state.roomno}
                     onChange={this.handleInputChange}
                     required
+                    disabled
                   />
                 </div>
               </div>
@@ -132,13 +148,67 @@ export default class EditHotelDetails extends Component {
             <div className="row ">
               <div className="col-md-12">
                 <div className="form-group">
-                  <strong>Hotel Name :</strong>
+                  <strong>Floor :</strong>
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Enter Name"
-                    name="hotelName"
-                    value={this.state.hotelName}
+                    placeholder="Enter Floor"
+                    name="floor"
+                    value={this.state.floor}
+                    onChange={this.handleInputChange}
+                    required
+                    disabled
+                  />
+                </div>
+              </div>
+            </div>
+            &nbsp; &nbsp;
+            <div className="row ">
+              <div className="col-md-12">
+                <div className="form-group">
+                  <strong>Room Type:</strong>
+                  <select
+                    className="form-control"
+                    name="roomtype"
+                    value={this.state.roomtype}
+                    onChange={this.handleChange}
+                    disabled
+                  >
+                    <option value="Not">Not Selected</option>
+                    <option value="Single Room">Single Room </option>
+                    <option value="Double Room"> Double Room </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            &nbsp; &nbsp;
+            <div className="row ">
+              <div className="col-md-12">
+                <div className="form-group">
+                  <strong>Rent (per day) :</strong>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Enter Rent (Rs)"
+                    name="rent"
+                    value={this.state.rent}
+                    onChange={this.handleInputChange}
+                    required
+                    disabled
+                  />
+                </div>
+              </div>
+            </div>
+            &nbsp; &nbsp;
+            <div className="row ">
+              <div className="col-md-12">
+                <div className="form-group">
+                  <strong>Date :</strong>
+                  <input
+                    type="date"
+                    className="form-control"
+                    name="date"
+                    value={this.state.date}
                     onChange={this.handleInputChange}
                     required
                   />
@@ -149,100 +219,33 @@ export default class EditHotelDetails extends Component {
             <div className="row ">
               <div className="col-md-12">
                 <div className="form-group">
-                  <strong>District :</strong>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter District"
-                    name="district"
-                    value={this.state.district}
+                  <strong>Food :</strong>
+
+                  <select
+                    className="form-select"
+                    name="type"
+                    value={this.state.type}
                     onChange={this.handleInputChange}
-                    required
-                  />
+                  >
+                    <option type="not selected yet" selected>
+                      Select Type
+                    </option>
+                    <option type="With Foods">With Foods</option>
+                    <option type="Without Foods">Without Foods</option>
+                  </select>
                 </div>
               </div>
             </div>
             &nbsp; &nbsp;
-            <div className="row ">
-              <div className="col-md-12">
-                <div className="form-group">
-                  <strong>City :</strong>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter City"
-                    name="city"
-                    value={this.state.city}
-                    onChange={this.handleInputChange}
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-            &nbsp; &nbsp;
-            <div className="row ">
-              <div className="col-md-12">
-                <div className="form-group">
-                  <strong>Address :</strong>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter Address"
-                    name="address"
-                    value={this.state.address}
-                    onChange={this.handleInputChange}
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-            &nbsp; &nbsp;
-            <div className="row ">
-              <div className="col-md-12">
-                <div className="form-group">
-                  <strong>Telephone No :</strong>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter Tele No"
-                    name="teleNo"
-                    value={this.state.teleNo}
-                    onChange={this.handleInputChange}
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-            &nbsp; &nbsp;
-            <div className="row ">
-              <div className="col-md-12">
-                <div className="form-group">
-                  <strong>About :</strong>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter About"
-                    name="description"
-                    value={this.state.description}
-                    onChange={this.handleInputChange}
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-            &nbsp;
             <div className="col-md-12">
               <div className="form-group">
-              <button className="btn btn-outline-success" type="submit">
-                  <i className="fa fa-edit"> Save </i>
+                <button className="btn btn-outline-success" type="submit">
+                  <i className="fa fa-edit"> Update </i>
                 </button>
               </div>
             </div>
             &nbsp;
           </form>
-          <a className="btn btn-outline-danger" href={'/view/admin/hotels'}>
-            <i className="fa fa-edit"></i>&nbsp;Back
-          </a>
         </div>
       </div>
     );
