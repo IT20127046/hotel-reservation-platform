@@ -22,31 +22,24 @@ router.post('/customer/registration', (req, res) => {
     }
 
     Users.findOne({
-        NIC: req.body.NIC
-    })
-        .then(user => {
+        email: req.body.email
+    }).then(user => {
             if (!user) {
                 bcrypt.hash(req.body.password, 10, (err, hash) => {
                     userData.password = hash
-                    // console.log("bcrypt")
                     Users.create(userData)
-                        .then(res => {
-                            // console.log("then")
-                            
+                        .then(res => {    
                             res.status(200).json({
                                 success: "Registered successfully"
-                            })
-                            
+                            })  
                         })
                         .catch(err => {
-                            // console.log("catch")
                             res.status(400).json({
                                 errorMessage: 'Something went wrong!',
                                 status: false
                               });
                         });
                 })
-
             }
             else {
                 return res.status(401).json({
