@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import logo from "../images/img.jpg";
+import logo from "../../images/img.jpg";
 
 export default class viewBookedDetails extends Component {
   constructor(props) {

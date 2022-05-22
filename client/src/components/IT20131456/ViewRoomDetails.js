@@ -74,7 +74,7 @@ export default class ViewRoomDetails extends Component {
                     <i className="fa fa-trash"></i>&nbsp;Delete
                   </a>
                   &nbsp;
-                  <a className="btn btn-outline-danger" href="emails/view">
+                  <a className="btn btn-outline-danger" href="/emails/view">
                     <i className="fa fa-credit-card"></i>&nbsp;Payment Confirm
                   </a>
                 </td>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';    //new
-import NavBarHotel from './IT20125202/NavBarHotel';
+import NavBarHotel from '../IT20125202/NavBarHotel';
 
 export default class ViewHotelDetails_HAdmin extends Component {
 
