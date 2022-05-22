@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-
 export default class CreateRoomDetails extends Component {
   constructor(props) {
     super(props);
@@ -11,9 +10,7 @@ export default class CreateRoomDetails extends Component {
       floor: "",
       roomtype: "",
       rent: "",
-    
-    }; 
- 
+    };
   }
 
   handleInputChange = (e) => {
@@ -33,40 +30,33 @@ export default class CreateRoomDetails extends Component {
       [name]: value,
     });
   };
-  
 
   onSubmit = (e) => {
     e.preventDefault();
 
-
-    const {  hotelid, roomno, floor, roomtype, rent  } = this.state;
+    const { hotelid, roomno, floor, roomtype, rent } = this.state;
 
     const data = {
       hotelid: hotelid,
       roomno: roomno,
       floor: floor,
       roomtype: roomtype,
-      rent: rent,  
-    
+      rent: rent,
     };
-    
-
 
     console.log(data);
 
     axios.post("http://localhost:5000/room/save", data).then((res) => {
-      if (res.data.success) { 
+      if (res.data.success) {
         alert("Hotel Room Created Successfully");
-        window.location ="/rooms"      
-                      
+        window.location = "/rooms";
+
         this.setState({
-          hotelid:"",
+          hotelid: "",
           roomno: "",
           floor: "",
           roomtype: "",
           rent: "",
-        
-        
         });
       }
     });
@@ -75,7 +65,7 @@ export default class CreateRoomDetails extends Component {
   render() {
     return (
       <div>
-     <div className="container border border-dark  mt-5 col-md-6">
+        <div className="container border border-dark  mt-5 col-md-6">
           <div className="form-group row">
             <div className="col-lg-12 margin-tb">
               <div>
@@ -87,7 +77,7 @@ export default class CreateRoomDetails extends Component {
           </div>
 
           <form onSubmit={this.onSubmit}>
-          <div className="row ">
+            <div className="row ">
               <div className="col-md-12">
                 <div className="form-group">
                   <strong>Hotel ID :</strong>
@@ -146,11 +136,16 @@ export default class CreateRoomDetails extends Component {
               <div className="col-md-12">
                 <div className="form-group">
                   <strong>Room Type:</strong>
-                  <select className="form-control" name ="roomtype" value={this.state.roomtype}  onChange={this.handleChange} >
-                      <option value ="Not">Not Selected</option>
-                      <option value ="Single Room">Single Room </option>
-                      <option value ="Double Room"> Double Room </option>
-                    </select>
+                  <select
+                    className="form-control"
+                    name="roomtype"
+                    value={this.state.roomtype}
+                    onChange={this.handleChange}
+                  >
+                    <option value="Not">Not Selected</option>
+                    <option value="Single Room">Single Room </option>
+                    <option value="Double Room"> Double Room </option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -171,10 +166,10 @@ export default class CreateRoomDetails extends Component {
                 </div>
               </div>
             </div>
-             &nbsp; &nbsp;          
-              <div className="col-md-12">
+            &nbsp; &nbsp;
+            <div className="col-md-12">
               <div className="form-group">
-              <button className="btn btn-outline-success" type="submit">
+                <button className="btn btn-outline-success" type="submit">
                   <i className="fa fa-save"> Save </i>
                 </button>
               </div>
