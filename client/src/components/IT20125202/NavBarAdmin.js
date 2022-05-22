@@ -42,7 +42,7 @@ class NavBarAdmin extends Component {
 
     return (
       <div>
-        <nav class="navbar navbar-expand-lg navbar-light" style={{background: '#000080'}}>
+        <nav class="navbar navbar-expand-lg navbar-light" style={{background: 'black'}}>
           <div className="container-fluid">
             <a className="navbar-brand" href="/" style={{color: 'white'}}>Online Hotel Reservation Platform</a>
 

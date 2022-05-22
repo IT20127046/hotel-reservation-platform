@@ -9,6 +9,8 @@ export default class BookTaxi extends Component {
             email:"",
             teleNo: "",
             msg: "Hotel Room Reserverd",
+            subject:"Payment Details",
+            message:"We have successfully received your payment. Thank You"
         }; 
      
       }
@@ -34,12 +36,13 @@ export default class BookTaxi extends Component {
     onSubmit = (e) => {
         e.preventDefault();
 
-        const {msg, email, teleNo } = this.state;
+        const {msg, email, teleNo, subject, message } = this.state;
     
         // Send data to SMS Service
         const msgData = {
             sendmsg: msg,
             teleNo: teleNo
+          
         };
 
         axios.post("http://localhost:5000/sms/send", msgData).then((res) => {
@@ -50,13 +53,38 @@ export default class BookTaxi extends Component {
 
         // Send data to Email Service
         const emailData = {
-            sendmsg: msg,
-            email: email
+          
+            email: email,
+            subject: subject,
+            message: message,
+
+
+
         };
 
-        axios.post("http://localhost:5000/", emailData).then((res) => {
+        axios.post("http://localhost:5000/email/save", emailData).then((res) => {
         if (res.data.success) {
-            console.log('Email Send Successfull');
+            console.log('Email Sent Successfull');
+        }
+        });
+
+
+
+
+           // Send data to Email Service
+           const emailDataSave = {
+          
+            email: email,
+            subject: subject,
+            message: message,
+
+
+
+        };
+
+        axios.post("http://localhost:5000/api/email", emailDataSave).then((res) => {
+        if (res.data.success) {
+            console.log('Email Sent Successfull');
         }
         });
     }
@@ -111,6 +139,7 @@ export default class BookTaxi extends Component {
               <button className="btn btn-dark" type="submit">Send</button>
               </div>
           </form>
+
           <br/>
           <a className="btn btn-dark" href={"/taxi"}>
             <i></i>&nbsp;Reserve a Taxi

@@ -48,7 +48,7 @@ export default class TaxiService extends Component {
                 console.log(res.data.success);
 
              
-              window.location = "/taxi/alert";
+              window.location = `/taxi/alert/${this.state.teleNo}`;
         
             }
         });
