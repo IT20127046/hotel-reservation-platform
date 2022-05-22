@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
 const cors = require("cors");
-const payment = require('./routes/payment');
+const payment = require("./routes/payment");
 
 require("dotenv").config();
 
@@ -14,22 +14,13 @@ const roomrouter = require("./routes/roomRouter");
 const hotelRouter = require("./routes/hotelRouter");
 const reservedroomRouter = require("./routes/reservedRoomsRouter");
 
-
 const smsService = require("./services/smsService");
 const taxiService = require("./services/taxiService");
-
 
 const customerRouter = require("./routes/customerRouter");
 const adminRouter = require("./routes/adminRouter");
 
-
-
-
-
 const emailrouter = require("./services/EmailServiceApi");
-
-
-
 
 app.use(bodyparser.json());
 app.use(cors());
@@ -42,19 +33,15 @@ app.use(reservedroomRouter);
 
 //payment gateway
 app.use(express.json());
-app.use('/payment', payment);
-
+app.use("/payment", payment);
 
 app.use(smsService);
 app.use(taxiService);
 
-
 app.use(emailrouter);
-
 
 app.use(customerRouter);
 app.use(adminRouter);
-
 
 const port = process.env.PORT || 5000;
 const uri = process.env.MONGO_URI;
