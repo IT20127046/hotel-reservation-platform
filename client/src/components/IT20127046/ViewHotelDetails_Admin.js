@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import NavBarAdmin from '../IT20125202/NavBarAdmin';
 
 export default class ViewHotelDetails_Admin extends Component {
   constructor(props) {
@@ -37,7 +38,10 @@ export default class ViewHotelDetails_Admin extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
+        <NavBarAdmin />
+        <div className="container">
+        
         <div className="float-left">
           &nbsp;
           <h2>Hotels</h2>
@@ -57,6 +61,7 @@ export default class ViewHotelDetails_Admin extends Component {
               <th scope="col">Address</th>
               <th scope="col">Tele No</th>
               <th scope="col">About</th>
+              <th scope="col">Rooms</th>
             </tr>
           </thead>
 
@@ -72,6 +77,12 @@ export default class ViewHotelDetails_Admin extends Component {
                 <td>{hotelData.teleNo} </td>
                 <td>{hotelData.description} </td>
 
+                <td>
+                  <a className="btn btn-outline-success" href={`/rooms`}>
+                    <i className="fa fa-edit"></i>&nbsp;View
+                  </a>
+                </td>
+
                 <td className="text-center">                 
                   <a className="btn btn-outline-success" href={`/hotel/edit/${hotelData._id}`}>
                     <i className="fa fa-edit"></i>&nbsp;Edit
@@ -85,6 +96,7 @@ export default class ViewHotelDetails_Admin extends Component {
             ))}
           </tbody>
         </table>
+      </div>
       </div>
     );
   }

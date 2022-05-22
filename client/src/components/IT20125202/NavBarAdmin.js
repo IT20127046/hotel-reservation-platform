@@ -26,7 +26,7 @@ class NavBarAdmin extends Component {
             <a className="nav-link" aria-current="page" href="/adminhome" style={{textDecoration: 'none', color: 'white'}}>Home</a>
           </li>
           <li className='nav-item'>
-            <a className="nav-link" aria-current="page" href="/view/customer/hotels" style={{textDecoration: 'none', color: 'white'}}>Hotels</a>
+            <a className="nav-link" aria-current="page" href="/view/admin/hotels" style={{textDecoration: 'none', color: 'white'}}>Hotels</a>
           </li>
           <li className='nav-item'>
             <a className="nav-link" aria-current="page" href="/customers" style={{textDecoration: 'none', color: 'white'}}>Customers</a>
