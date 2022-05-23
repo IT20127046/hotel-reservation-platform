@@ -75,7 +75,7 @@ export default class EditHotelDetails extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
 
-    axios.get(`http://localhost:5000/hotel/get/${id}`).then((res) => {
+    axios.get(`http://localhost:5000/hotel/get/byID/${id}`).then((res) => {
       if (res.data.success) {
         this.setState({
             hotelID:res.data.hotelDetails.hotelID,

@@ -14,7 +14,8 @@ export default class CreateHotel extends Component {
         teleNo: "",
         description: "",
         email: "",
-        password: ""
+        password: "",
+        successAlert: ""
     }; 
  
   }
@@ -64,12 +65,7 @@ export default class CreateHotel extends Component {
       if (res.data.success) { 
         alert("Hotel Created Successfully");
 
-        //  this.props.history.push({
-        //   pathname: "/",
-        //   state: this.roomno,
-          
-        // });
-        
+        window.location = '/hotelAdminLogin'
         
         this.setState({
             hotelID: "",
@@ -83,6 +79,10 @@ export default class CreateHotel extends Component {
             password: ""
         });
       }
+    });
+
+    this.setState({
+      successAlert: "Register Success. You can Login Now"
     });
   };
 
@@ -98,6 +98,14 @@ export default class CreateHotel extends Component {
                 &nbsp;
               </div>
             </div>
+          </div>
+
+          <a className="btn btn-outline-primary mb-2" href={'/hotelAdminLogin'}>
+            <i className="fa fa-edit"></i>&nbsp;Back to Login
+          </a>
+
+          <div className="container mb-2">
+            <p className="text-success h5">{this.state.successAlert}</p>
           </div>
 
           <form onSubmit={this.onSubmit} encType="multipart/form-data">
@@ -265,9 +273,7 @@ export default class CreateHotel extends Component {
             </div>
             &nbsp;
           </form>
-          <a className="btn btn-outline-danger" href={'/view/admin/hotels'}>
-            <i className="fa fa-edit"></i>&nbsp;Back
-          </a>
+          
         </div>
       </div>
     );

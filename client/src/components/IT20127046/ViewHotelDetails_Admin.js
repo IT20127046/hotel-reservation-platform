@@ -47,7 +47,7 @@ export default class ViewHotelDetails_Admin extends Component {
           <h2>Hotels</h2>
           &nbsp;
         </div>
-        <a className="btn btn-outline-success" href={'/add/hotel'}>
+        <a className="btn btn-outline-success" href={'/add/hotel/admin'}>
             <i className="fa fa-edit"></i>&nbsp;Add Hotel
         </a>
         <table className="table ">
