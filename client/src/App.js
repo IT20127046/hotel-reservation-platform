@@ -80,7 +80,7 @@ export default class App extends Component {
           <Route path="/customer/register" exact component={CreateCustomer}></Route>
           <Route path="/customer/login" exact component={CustomerLogin}></Route>
           <Route path="/sysAdminLogin" exact component={SysAdminLogin}></Route>
-          <Route path="/hotelAdminLogin" exactcomponent={HotelAdminLogin}></Route>
+          <Route path="/hotelAdminLogin" exact component={HotelAdminLogin}></Route>
           <Route path="/customer/home" exact component={CustomerHome}></Route>
           <Route path="/customer/profile" exact component={CustomerProfile}></Route>
           <Route path="/" exact component={LandingPage}></Route>
