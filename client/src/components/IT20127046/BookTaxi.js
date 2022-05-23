@@ -10,7 +10,9 @@ export default class BookTaxi extends Component {
             teleNo: "",
             msg: "Hotel Room Reserverd",
             subject:"Payment Details",
-            message:"We have successfully received your payment. Thank You"
+            message:"We have successfully received your payment. Thank You",
+            emailAlert: "",
+            smsAlert: ""
         }; 
      
       }
@@ -47,7 +49,11 @@ export default class BookTaxi extends Component {
 
         axios.post("http://localhost:5000/sms/send", msgData).then((res) => {
         if (res.data.success) {
-            console.log('SMS Send Successfull');
+            console.log('SMS Sent Successfull');
+
+            this.setState({
+              smsAlert: "SMS Sent Successfull"
+            });
         }
         });
 
@@ -65,11 +71,12 @@ export default class BookTaxi extends Component {
         axios.post("http://localhost:5000/email/save", emailData).then((res) => {
         if (res.data.success) {
             console.log('Email Sent Successfull');
+            
+            this.setState({
+              emailAlert: "Email Sent Successfull"
+            });
         }
         });
-
-
-
 
            // Send data to Email Service
            const emailDataSave = {
@@ -108,6 +115,7 @@ export default class BookTaxi extends Component {
           <p className="m-2">
             Please Enter Your Email and Telephone Number for Send Conformation
           </p>
+
           <form onSubmit={this.onSubmit}>
             <div className="form-group m-2">
               <label for="exampleInputEmail1">Email Address</label>
@@ -139,6 +147,15 @@ export default class BookTaxi extends Component {
               <button className="btn btn-dark" type="submit">Send</button>
               </div>
           </form>
+          <br/>
+
+          <div className="container mb-2">
+            <p className="text-success h6">{this.state.emailAlert}</p>
+          </div>
+
+          <div className="container mb-2">
+            <p className="text-success h6">{this.state.smsAlert}</p>
+          </div>
 
           <br/>
           <a className="btn btn-dark" href={"/taxi"}>

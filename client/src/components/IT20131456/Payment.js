@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 
 function App() {
-  const [amount, setAmount] = useState(100);
+  const [amount, setAmount] = useState(60);
   const [name, setName] = useState();
 
   const handleToken = (token) => {

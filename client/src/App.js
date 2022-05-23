@@ -45,7 +45,6 @@ export default class App extends Component {
       <BrowserRouter>
         <div>
 
-          <Route path="/about" component={AboutUs}></Route>
           <Route path="/payment" component={Payment}></Route>
           <Route path="/rooms" component={ViewRoomDetails}></Route>
           <Route path="/room/add" component={CreateRoomDetails}></Route>
@@ -86,6 +85,7 @@ export default class App extends Component {
           <Route path="/" exact component={LandingPage}></Route>
           <Route path="/adminhome" exact component={SysAdminHome}></Route>
           <Route path="/customers" exact component={Customers}></Route>
+          <Route path="/aboutus" exact component={AboutUs}></Route>
         </div>
 
       </BrowserRouter>

@@ -22,6 +22,7 @@ service.post("/sms/send", (req, res) => {
   //   } else {
   //     if (responseData.messages[0]["status"] === "0") {
   //       console.log("Message sent successfully.");
+  //       return res.status(200).json({success: true});
   //     } else {
   //       console.log(
   //         `Message failed with error: ${responseData.messages[0]["error-text"]}`
